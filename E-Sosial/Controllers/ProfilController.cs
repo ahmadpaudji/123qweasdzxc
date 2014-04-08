@@ -1,4 +1,5 @@
-﻿using System;
+﻿using E_Sosial.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,7 +22,13 @@ namespace E_Sosial.Controllers
 
 		public ActionResult VisiMisi()
 		{
-			return View();
+			var tProfil = new Content();
+			var dataProfil = tProfil.getVisiMisi();
+			if (dataProfil == null)
+			{
+				return HttpNotFound();
+			}
+			return View(dataProfil);
 		}
 
 		//
@@ -29,7 +36,13 @@ namespace E_Sosial.Controllers
 
 		public ActionResult ProgramKerja()
 		{
-			return View();
+			var tProfil = new Content();
+			var dataProfil = tProfil.getProgramKerja();
+			if (dataProfil == null)
+			{
+				return HttpNotFound();
+			}
+			return View(dataProfil);
 		}
 
 		//

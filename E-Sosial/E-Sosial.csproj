@@ -222,6 +222,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Berita.cs" />
+    <Compile Include="Models\Content.cs" />
+    <Compile Include="Models\Download.cs" />
     <Compile Include="Models\Kecamatan.cs" />
     <Compile Include="Models\Kelurahan.cs" />
     <Compile Include="Models\Pmks.cs" />
@@ -796,6 +798,7 @@
     <Content Include="Views\Berita\Index.aspx" />
     <Content Include="Views\Berita\listBerita.aspx" />
     <Content Include="Views\Berita\View.aspx" />
+    <Content Include="Views\Data\Download.aspx" />
     <Content Include="Views\Data\Pmks.aspx" />
     <Content Include="Views\Data\Psks.aspx" />
     <Content Include="Views\Home\Index.aspx" />

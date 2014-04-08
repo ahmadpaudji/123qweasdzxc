@@ -60,5 +60,20 @@ namespace E_Sosial.Controllers
 			return View(listPsks);
 		}
 
+		//
+		// GET: /Data/download
+		public ActionResult Download(string url)
+		{
+			if (url != null)
+			{
+				return File(url, "application/pdf,application/doc,application/docx,application/xls,application/xlsx,application/ppt,application/pptx", Server.UrlEncode(url));
+			}
+			else
+			{
+				var tDownload = new E_Sosial.Models.Download();
+				var listDownload = tDownload.getList();
+				return View(listDownload);
+			}
+		}
     }
 }

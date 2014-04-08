@@ -35,12 +35,17 @@
 						<a href="#"><h4>Program Kerja</h4></a>
 						<div class="boxInfo examInfo">
 							<ul>
-								<li class="proExm"><a href="#">Admin</a></li>
-								<li class="dateExm">8 Maret 2014</li>
+								<li class="proExm"><a href="#"><%: Model.user_nama %></a></li>
+								<li class="dateExm"><%: Model.content_time %></li>
 								<li style="background-position: -30px -200px;"></li>
 								<li style="background-position: -30px -200px;"></li>
 							</ul>
-                                
+							<div>
+								<% if (ViewBag.file_url != null) { %>
+								<img src="<%: Url.Content(ViewBag.file_url) %>" />
+								<% } %>
+								<%: Html.Raw(Model.content) %>
+                                <!--
 								<ol class="cList arrow1Li">
 									<li style="display:block;text-align:justify;">Kegiatan Penyusunan Laporan Capaian Kinerja dan Ikhtisar Realisasi Kinerja SKPD</li>
                                     
@@ -55,6 +60,7 @@
 								</ol>
 								<h3>&nbsp;</h3>
 								<p style="text-align:right;">Link : <a href="<%: Url.Content("~/assets/public/file/TUPOKSI1.pdf") %>">Download </a></p>
+								-->
 							</div>
 						</div>
 					</div>

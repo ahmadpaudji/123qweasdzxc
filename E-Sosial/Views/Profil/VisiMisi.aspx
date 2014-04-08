@@ -35,18 +35,22 @@
 						<a href="#"><h4>VISI MISI DINAS SOSIAL KOTA BANDUNG</h4></a>
 						<div class="boxInfo examInfo">
 							<ul>
-								<li class="proExm"><a href="#">Admin</a></li>
-								<li class="dateExm">8 Maret 2014</li>
+								<li class="proExm"><a href="#"><%: Model.user_nama %></a></li>
+								<li class="dateExm"><%: Model.content_time %></li>
 								<li style="background-position: -30px -200px;"></li>
 								<li style="background-position: -30px -200px;"></li>
 							</ul>
-							<div> <!-- Visi -->
+							<div>
+								<% if (ViewBag.file_url != null) { %>
+								<img src="<%: Url.Content(ViewBag.file_url) %>" />
+								<% } %>
+								<%: Html.Raw(Model.content) %>
+								<!--
 								<h3>Visi</h3>
 								<p>Berdasarkan hal tersebut, maka Visi Dinas Sosial Kota Bandung adalah</p>
                                 
 								<p style="text-align:justify;">"Kesejahteraan Sosial dari, oleh, dan untuk Masyarakat menuju Bandung yang Bermartabat " </p>
                                 
-                                <!-- Misi -->
 								<h3>Misi</h3>
                                <p>Berdasarkan Visi Dinas Sosial Kota Bandung tersebut di atas, maka Dinas Sosial Kota Bandung memiliki misi sebagai berikut :</p> 
                                 
@@ -62,6 +66,7 @@
 								
 								</ol>
 								<p style="text-align:right;">Link : <a href="<%: Url.Content("~/assets/public/file/VISI_MISI_DINAS_SOSIAL_KAB._BANDUNG_.pdf") %>">Download </a></p>
+								-->
 							</div>
 						</div>
 					</div>

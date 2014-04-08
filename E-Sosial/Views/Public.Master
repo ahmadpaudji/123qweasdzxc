@@ -84,7 +84,7 @@
 						<li><%=Html.ActionLink("PMKS", "Pmks", "Data")%></li>
 						<li><%=Html.ActionLink("PSKS", "Psks", "Data")%></li>
 
-						<li><a href="download.html">Download</a></li>
+						<li><%=Html.ActionLink("Download", "Download", "Data")%></li>
 						<li><%=Html.ActionLink("Kontak", "kontak", "profil")%></li>
 					</ul>
 				</section>
