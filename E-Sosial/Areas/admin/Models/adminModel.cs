@@ -17,6 +17,11 @@ namespace E_Sosial.Areas.admin.Models
         [StringLength(15, MinimumLength = 6,ErrorMessage="Minimum password 6 dan masksimal 15")]
         public string password { get; set; }
 
+        [Required(ErrorMessage = "Retype password harus diisi.")]
+        [DataType(DataType.Password)]
+        [StringLength(15, MinimumLength = 6, ErrorMessage = "Minimum password 6 dan masksimal 15")]
+        public string retype_password { get; set; }
+
         [Required(ErrorMessage="Nama harus diisi")]
         [StringLength(47)]
         public string nama { get; set; }

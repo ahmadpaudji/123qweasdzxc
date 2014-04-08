@@ -40,8 +40,10 @@ namespace E_Sosial.Areas.admin.Controllers
         public ActionResult Details(long id = 0)
         {
             t_content t_content = db.t_content.Find(id);
-            var file = (from table in db.t_file where table.file_parent == id && table.file_category == "Prosedur" select table.file_url).FirstOrDefault();
+            var file = (from table in db.t_file where table.file_parent == id && table.file_category == "ProsedurFile" select table.file_url).FirstOrDefault();
             ViewBag.file = file;
+            var gambar = (from table in db.t_file where table.file_parent == id && table.file_category == "ProsedurGambar" select table.file_url).FirstOrDefault();
+            ViewBag.gambar = gambar;
             var iduser = (from table in db.t_content where table.content_id == id select table.user_id).FirstOrDefault();
             var user = (from table in db.users where table.id_user == iduser select table.nama).FirstOrDefault();
             ViewBag.user = user;
@@ -79,8 +81,10 @@ namespace E_Sosial.Areas.admin.Controllers
                 using (var db = new db_esosEntities())
                 {
                     var valid = 0;
+                    var valid2 = 0;
                     var create = db.t_content.Create();
                     var createFile = db.t_file.Create();
+                    var createGambar = db.t_file.Create();
 
                     create.content_name = t_content.content_name;
                     create.content_type = "Prosedur";
@@ -100,7 +104,7 @@ namespace E_Sosial.Areas.admin.Controllers
                                 var path = Path.Combine(Server.MapPath("~/Content/Document"), fileName);
                                 t_content.file.SaveAs(path);
 
-                                createFile.file_category = "Prosedur";
+                                createFile.file_category = "ProsedurFile";
                                 createFile.file_location = path;
                                 createFile.file_name = fileName;
                                 createFile.file_title = fileName;
@@ -122,6 +126,39 @@ namespace E_Sosial.Areas.admin.Controllers
                         }
                     }
 
+                    if (t_content.gambar != null)
+                    {
+                        if (t_content.gambar.ContentLength < 2048000)
+                        {
+                            var fileName = Path.GetFileName(t_content.gambar.FileName);
+                            var ex = Path.GetExtension(fileName);
+                            if (ex == ".jpg")
+                            {
+                                var path = Path.Combine(Server.MapPath("~/Content/Image"), fileName);
+                                t_content.gambar.SaveAs(path);
+
+                                createGambar.file_category = "ProsedurGambar";
+                                createGambar.file_location = path;
+                                createGambar.file_name = fileName;
+                                createGambar.file_title = fileName;
+                                createGambar.file_url = "~/Content/Image/" + fileName;
+                                createGambar.mime_type = ex;
+                                createGambar.user_id = (from table in db.users where table.username == User.Identity.Name select table.id_user).FirstOrDefault();
+                                valid2 = 1;
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("", "Gambar harus berformat (.jpg)");
+                                return View(t_content);
+                            }
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Ukuran gambar tidak boleh lebih dari 2 MB");
+                            return View(t_content);
+                        }
+                    }
+
                     db.t_content.Add(create);
                     db.SaveChanges();
 
@@ -129,6 +166,13 @@ namespace E_Sosial.Areas.admin.Controllers
                     {
                         createFile.file_parent = ((int)(from table in db.t_content select table.content_id).Max());
                         db.t_file.Add(createFile);
+                        db.SaveChanges();
+                    }
+
+                    if (valid2 == 1)
+                    {
+                        createGambar.file_parent = ((int)(from table in db.t_content select table.content_id).Max());
+                        db.t_file.Add(createGambar);
                         db.SaveChanges();
                     }
 
@@ -144,7 +188,7 @@ namespace E_Sosial.Areas.admin.Controllers
         [Authorize(Roles = "super_admin,admin")]
         public ActionResult Edit(long id = 0)
         {
-            var id_file = (from table in db.t_file where table.file_parent == id && table.file_category == "Prosedur" select table.file_id).FirstOrDefault();
+            var id_file = (from table in db.t_file where table.file_parent == id && table.file_category == "ProsedurFile" select table.file_id).FirstOrDefault();
             t_file tfile = db.t_file.Find(id_file);
 
             if (tfile != null)
@@ -152,7 +196,7 @@ namespace E_Sosial.Areas.admin.Controllers
                 var prosedur = (from table in db.t_content
                                join table2 in db.t_file
                                on table.content_id equals table2.file_parent
-                               where table.content_id== id && table2.file_category == "Prosedur"
+                               where table.content_id== id && table2.file_category == "ProsedurFile"
                                select new admin.Models.ContentCreate
                                {
                                    content_id = table.content_id,
@@ -206,9 +250,13 @@ namespace E_Sosial.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var id_file = (from table in db.t_file where table.file_parent == id && table.file_category == "Prosedur" select table.file_id).FirstOrDefault();
+                var id_file = (from table in db.t_file where table.file_parent == id && table.file_category == "ProsedurFile" select table.file_id).FirstOrDefault();
                 t_file tfile = db.t_file.Find(id_file);
+                var id_gambar = (from table in db.t_file where table.file_parent == id && table.file_category == "ProsedurGambar" select table.file_id).FirstOrDefault();
+                t_file tgambar = db.t_file.Find(id_gambar);
                 t_content content = db.t_content.Find(id);
+                var valid = 0;
+                var valid2 = 0;
 
                 using (var konten = new db_esosEntities())
                 {
@@ -218,6 +266,9 @@ namespace E_Sosial.Areas.admin.Controllers
                     content.user_id = (from table in konten.users where table.username == User.Identity.Name select table.id_user).FirstOrDefault();
                     content.content_time = DateTime.Now;
                     content.url = "kosong";
+
+                    var createFile = db.t_file.Create();
+                    var createGambar = db.t_file.Create();
 
                     if (t_content.file != null)
                     {
@@ -230,9 +281,9 @@ namespace E_Sosial.Areas.admin.Controllers
                                 var path = Path.Combine(Server.MapPath("~/Content/Document"), fileName);
                                 t_content.file.SaveAs(path);
 
-                                var createFile = db.t_file.Create();
+                                
 
-                                createFile.file_category = "Prosedur";
+                                createFile.file_category = "ProsedurFile";
                                 createFile.file_location = path;
                                 createFile.file_name = fileName;
                                 createFile.file_parent = id;
@@ -240,15 +291,8 @@ namespace E_Sosial.Areas.admin.Controllers
                                 createFile.file_url = "~/Content/Document/" + fileName;
                                 createFile.mime_type = ex;
                                 createFile.user_id = (from table in db.users where table.username == User.Identity.Name select table.id_user).FirstOrDefault();
-
-                                db.t_file.Add(createFile);
-                                db.SaveChanges();
-
-                                if (tfile != null)
-                                {
-                                    db.t_file.Remove(tfile);
-                                    db.SaveChanges();
-                                }
+                                valid = 1;
+                                
 
                             }
                             else
@@ -264,7 +308,68 @@ namespace E_Sosial.Areas.admin.Controllers
                         }
                     }
 
+                    if (t_content.gambar != null)
+                    {
+                        if (t_content.gambar.ContentLength < 2048000)
+                        {
+                            var fileName = Path.GetFileName(t_content.gambar.FileName);
+                            var ex = Path.GetExtension(fileName);
+                            if (ex == ".jpg")
+                            {
+                                var path = Path.Combine(Server.MapPath("~/Content/Image"), fileName);
+                                t_content.gambar.SaveAs(path);
+
+                                
+
+                                createGambar.file_category = "ProsedurGambar";
+                                createGambar.file_location = path;
+                                createGambar.file_name = fileName;
+                                createGambar.file_title = fileName;
+                                createGambar.file_url = "~/Content/Image/" + fileName;
+                                createGambar.mime_type = ex;
+                                createGambar.user_id = (from table in db.users where table.username == User.Identity.Name select table.id_user).FirstOrDefault();
+                                createGambar.file_parent = id;
+                                valid2 = 1;
+                                
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("", "Gambar harus berformat (.jpg)");
+                                return View(t_content);
+                            }
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Ukuran gambar tidak boleh lebih dari 2 MB");
+                            return View(t_content);
+                        }
+                    }
+
                     db.SaveChanges();
+
+                    if (valid == 1)
+                    {
+                        db.t_file.Add(createFile);
+                        db.SaveChanges();
+
+                        if (tfile != null)
+                        {
+                            db.t_file.Remove(tfile);
+                            db.SaveChanges();
+                        }
+                    }
+
+                    if (valid2 == 1)
+                    {
+                        db.t_file.Add(createGambar);
+                        db.SaveChanges();
+
+                        if (tgambar != null)
+                        {
+                            db.t_file.Remove(tgambar);
+                            db.SaveChanges();
+                        }
+                    }
 
                     return RedirectToAction("Index");
                 }

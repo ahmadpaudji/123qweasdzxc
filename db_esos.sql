@@ -25,11 +25,11 @@ CREATE TABLE `detail_roles` (
   `id_user` int(11) DEFAULT NULL,
   `id_roles` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_detail_roles`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `detail_roles` */
 
-insert  into `detail_roles`(`id_detail_roles`,`id_user`,`id_roles`) values (1,2,1),(4,6,2),(3,5,1);
+insert  into `detail_roles`(`id_detail_roles`,`id_user`,`id_roles`) values (1,2,1),(4,6,2),(3,5,1),(5,7,1),(6,8,2);
 
 /*Table structure for table `roles` */
 
@@ -56,11 +56,11 @@ CREATE TABLE `t_album` (
   `album_desc` text COMMENT 'deskripsi kegiatan album foto',
   `album_date` datetime NOT NULL COMMENT 'tanggal memasukan data',
   PRIMARY KEY (`album_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_album` */
 
-insert  into `t_album`(`album_id`,`user_id`,`album_title`,`album_desc`,`album_date`) values (3,2,'Umum',NULL,'2014-04-07 01:28:00');
+insert  into `t_album`(`album_id`,`user_id`,`album_title`,`album_desc`,`album_date`) values (3,2,'Umum',NULL,'2014-04-07 01:28:00'),(4,2,'coba','Shhbjbjnknk','2014-04-07 17:46:07');
 
 /*Table structure for table `t_bidang` */
 
@@ -76,7 +76,7 @@ CREATE TABLE `t_bidang` (
   `bidang_date` datetime NOT NULL COMMENT 'tanggal masukan data',
   `bidang_desc_foto` varchar(200) DEFAULT NULL COMMENT 'konten gambar',
   PRIMARY KEY (`bidang_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_bidang` */
 
@@ -93,7 +93,7 @@ CREATE TABLE `t_content` (
   `url` varchar(100) CHARACTER SET utf8 NOT NULL,
   `content_time` datetime NOT NULL,
   PRIMARY KEY (`content_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_content` */
 
@@ -126,7 +126,7 @@ CREATE TABLE `t_dokumentasi` (
   `dokumentasi_type` enum('foto','video') NOT NULL COMMENT 'tipe file',
   `dokumentasi_date` datetime NOT NULL COMMENT 'tanggal memasukan file',
   PRIMARY KEY (`dokumentasi_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_dokumentasi` */
 
@@ -160,7 +160,7 @@ CREATE TABLE `t_download` (
   `download_date` datetime NOT NULL COMMENT 'tanggal memasukan data',
   `user_id` int(11) NOT NULL COMMENT 'join ke t_user',
   PRIMARY KEY (`download_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_download` */
 
@@ -179,7 +179,7 @@ CREATE TABLE `t_file` (
   `file_category` varchar(75) CHARACTER SET utf8 NOT NULL,
   `file_parent` int(20) NOT NULL,
   PRIMARY KEY (`file_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=93 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_file` */
 
@@ -227,11 +227,9 @@ CREATE TABLE `t_kesejahteraan` (
   `ks_date` datetime NOT NULL,
   `ks_year` year(4) DEFAULT NULL,
   PRIMARY KEY (`ks_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_kesejahteraan` */
-
-insert  into `t_kesejahteraan`(`ks_id`,`ks_name`,`ks_jumlah`,`ks_type`,`ks_satuan`,`ks_date`,`ks_year`) values (54,'Pekerja Sosial Masyarakat (PSM)',33,'PSKS',2,'2014-04-05 01:09:17',2014),(53,'Penyandang',1234,'PMKS',1,'2014-04-05 01:08:50',2014);
 
 /*Table structure for table `t_news` */
 
@@ -250,7 +248,7 @@ CREATE TABLE `t_news` (
   `news_url` varchar(200) CHARACTER SET utf8 NOT NULL,
   `news_category` int(11) NOT NULL,
   PRIMARY KEY (`news_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_news` */
 
@@ -280,7 +278,7 @@ CREATE TABLE `t_organisasi` (
   `t_jabatan` varchar(100) NOT NULL COMMENT 'jabatan PJ',
   `t_path` varchar(200) NOT NULL COMMENT 'foto',
   PRIMARY KEY (`t_organisasi`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_organisasi` */
 
@@ -417,7 +415,7 @@ CREATE TABLE `t_wilayah` (
   `geo_location` text CHARACTER SET utf8,
   `web_url` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`wil_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_wilayah` */
 
@@ -436,11 +434,11 @@ CREATE TABLE `user` (
   `alamat` varchar(100) NOT NULL,
   `tanggal` datetime NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `user` */
 
-insert  into `user`(`id_user`,`username`,`user_password`,`user_passwordsalt`,`nama`,`email`,`hp`,`alamat`,`tanggal`) values (2,'hxlines','N0Q9S4g1kQe+3Uh5ywgy2BbA+B9ugZDv3LnBfTMHZFtjoZjt5ElVDmWvWzYIUInoOXPfTdegeyqxfK+1HFqoDw==','100000.T44tAvIE2oLj0YGqFuxx6lfsoSd9pFawmmSHX57s7GmSfQ==','Handoyo','dyo.9913@gamil.com','087871942562','Serang','2014-04-05 15:04:27'),(5,'adminchibi','T0ldEDKvTzgjVbxG2iXuWfhSCtuaMRWAxebccIYrf9BiHtbnvFFpwFyuKystqTfKJ1D7s16FFE82Hl7bl0CaZQ==','100000.e4hXZBrDPb20duAuev5g0Zish0bCbrDiV6lbfM5pa0SdrA==','Zakky chibi','zakkyMoetz@moetz.com','12333','Tangerang','2014-04-01 17:06:25'),(6,'admina','gkP/6LOlwdecl0EpHLkH5rQ4R0mAkOaCULddGRqqWiPhzUghN0LbyFglEr1ocRGY/mnZfHBKrItU2x+C582X5g==','100000.09q4EKK6lFuKOptFDGMh5jWh6a7kw0AUpKwzvRBJkvPDVw==','Meidi','adawd@dawd.com','087871942562','Bandung','2014-04-05 15:46:38');
+insert  into `user`(`id_user`,`username`,`user_password`,`user_passwordsalt`,`nama`,`email`,`hp`,`alamat`,`tanggal`) values (2,'hxlines','N0Q9S4g1kQe+3Uh5ywgy2BbA+B9ugZDv3LnBfTMHZFtjoZjt5ElVDmWvWzYIUInoOXPfTdegeyqxfK+1HFqoDw==','100000.T44tAvIE2oLj0YGqFuxx6lfsoSd9pFawmmSHX57s7GmSfQ==','Handoyo','dyo.9913@gamil.com','087871942562','Serang','2014-04-05 15:04:27'),(5,'admin','7reRmLWFf/Y5BHJ3MdNixVRMPhnJjGeb/EbAF8jNITIwDG8kN7JCzPTWAFNy86xsdkJ31SDkynpd85Kf3ZXWwg==','100000.WWXoZsGtpgFEdI0Fr4biCd44bFDQpVPXr9VnElJvzw0e4A==','Zakky chibi','zakkyMoetz@moetz.com','123334324322','Tangerang','2014-04-07 18:37:14'),(6,'admina','gkP/6LOlwdecl0EpHLkH5rQ4R0mAkOaCULddGRqqWiPhzUghN0LbyFglEr1ocRGY/mnZfHBKrItU2x+C582X5g==','100000.09q4EKK6lFuKOptFDGMh5jWh6a7kw0AUpKwzvRBJkvPDVw==','Meidi','adawd@dawd.com','087871942562','Bandung','2014-04-05 15:46:38'),(7,'ahmadpaudji','T9VhlLfXAzsL9bofQamXoU7cpq7mWvTUJc20y4KHQpewQArOXjxaJRS+xSnsd0L4bcDIyPWAL1kM6ChCxQ4fxw==','100000.rI1PsP8+0nKjvt83UEuQAVt6YRI87NM9axc1mRpEnhqxmg==','Ahmad Paudji','ahmadpaudji@gmail.com','085752225126','Jalan Titiran No.2','2014-04-07 17:55:29');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

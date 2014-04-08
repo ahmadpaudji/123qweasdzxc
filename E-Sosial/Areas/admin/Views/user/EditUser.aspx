@@ -39,6 +39,12 @@
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                         </div>
                         <% } %>
+                            <% if (ViewBag.errorPassword == 'y') { %>
+                        <div class="alert alert-error">
+                            <strong>Registrasi gagal !</strong> Password tidak sama dengan Retype Password.
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        </div>
+                        <% } %>
                             <div class="controls-row">
                                 <div class="span3">
                                     Username :
@@ -55,6 +61,15 @@
                                 <div class="span8">
                                     <%: Html.EditorFor(model => model.password)%>
                                     <span class="help-inline"><%: Html.ValidationMessageFor(model => model.password)%></span>
+                                </div>
+                            </div>
+                            <div class="controls-row">
+                                <div class="span3">
+                                    Retype Password :
+                                </div>
+                                <div class="span8">
+                                    <%: Html.EditorFor(model => model.retype_password) %>
+                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.retype_password) %></span>
                                 </div>
                             </div>
                             <div class="controls-row">

@@ -63,41 +63,50 @@ namespace E_Sosial.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = db.users.FirstOrDefault(u => u.username == admin.username);
-                if (user == null)
+                if (admin.password == admin.retype_password)
                 {
-                    using (db)
+                    var user = db.users.FirstOrDefault(u => u.username == admin.username);
+                    if (user == null)
                     {
-                        var crypto = new SimpleCrypto.PBKDF2();
-                        var enkripPassword = crypto.Compute(admin.password);
-                        var create = db.users.Create();
-                        var roles = db.detail_roles.Create();
+                        using (db)
+                        {
+                            var crypto = new SimpleCrypto.PBKDF2();
+                            var enkripPassword = crypto.Compute(admin.password);
+                            var create = db.users.Create();
+                            var roles = db.detail_roles.Create();
 
-                        create.username = admin.username;
-                        create.user_password = enkripPassword;
-                        create.user_passwordsalt = crypto.Salt;
-                        create.nama = admin.nama;
-                        create.hp = admin.hp;
-                        create.email = admin.email;
-                        create.alamat = admin.alamat;
-                        create.tanggal = DateTime.Now;
+                            create.username = admin.username;
+                            create.user_password = enkripPassword;
+                            create.user_passwordsalt = crypto.Salt;
+                            create.nama = admin.nama;
+                            create.hp = admin.hp;
+                            create.email = admin.email;
+                            create.alamat = admin.alamat;
+                            create.tanggal = DateTime.Now;
 
-                        db.users.Add(create);
-                        db.SaveChanges();
+                            db.users.Add(create);
+                            db.SaveChanges();
 
-                        roles.id_roles = admin.id_roles;
-                        roles.id_user = (from table in db.users where table.username == admin.username select table.id_user).FirstOrDefault();
+                            roles.id_roles = admin.id_roles;
+                            roles.id_user = (from table in db.users where table.username == admin.username select table.id_user).FirstOrDefault();
 
-                        db.detail_roles.Add(roles);
-                        db.SaveChanges();
+                            db.detail_roles.Add(roles);
+                            db.SaveChanges();
 
-                        return RedirectToAction("Index", "admin");
+                            return RedirectToAction("Index", "admin");
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.role = new SelectList(db.roles.ToList(), "id_roles", "roles");
+                        ViewBag.errorUsername = 'y';
+                        return View(admin);
                     }
                 }
                 else
                 {
                     ViewBag.role = new SelectList(db.roles.ToList(), "id_roles", "roles");
-                    ViewBag.errorUsername = 'y';
+                    ViewBag.errorPassword = 'y';
                     return View(admin);
                 }
             }

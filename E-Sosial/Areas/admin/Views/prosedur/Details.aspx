@@ -29,9 +29,9 @@
                             <table cellpadding="0" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
+                                        <th>User</th>
                                         <th>Prosedur</th>
                                         <th>Tanggal</th>
-                                        <th>User</th>
                                         <th>Dokumen</th>
                                     </tr>
                                 </thead>
@@ -67,6 +67,9 @@
                             <h2>Konten</h2>
                         </div>
                         <div class="content">
+                            <% if (ViewBag.gambar != null){ %>
+                                    <img width="200" height="200" src="<%: Url.Content(ViewBag.gambar) %>"><br />
+                                    <% } %>
                             <%: Html.Raw(Model.content) %>
                         </div>
                     </div>

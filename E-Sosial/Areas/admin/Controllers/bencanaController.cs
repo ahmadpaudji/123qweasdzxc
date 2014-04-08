@@ -60,7 +60,7 @@ namespace E_Sosial.Areas.admin.Controllers
         [Authorize(Roles = "super_admin,admin")]
         public ActionResult Create()
         {
-            ViewBag.wilayah = new SelectList(db.t_wilayah.ToList(), "wil_id", "wil_name");
+            ViewBag.wilayah = new SelectList((from table in db.t_wilayah where table.wil_type == "Kelurahan" select table).ToList(), "wil_id", "wil_name");
             return View();
         }
 
@@ -109,14 +109,14 @@ namespace E_Sosial.Areas.admin.Controllers
                             else
                             {
                                 ModelState.AddModelError("", "Gambar harus berformat (.jpg)");
-                                ViewBag.wilayah = new SelectList(db.t_wilayah.ToList(), "wil_id", "wil_name");
+                                ViewBag.wilayah = new SelectList((from table in db.t_wilayah where table.wil_type == "Kelurahan" select table).ToList(), "wil_id", "wil_name");
                                 return View(t_report);
                             }
                         }
                         else
                         {
                             ModelState.AddModelError("", "Ukuran gambar tidak boleh lebih dari 2 MB");
-                            ViewBag.wilayah = new SelectList(db.t_wilayah.ToList(), "wil_id", "wil_name");
+                            ViewBag.wilayah = new SelectList((from table in db.t_wilayah where table.wil_type == "Kelurahan" select table).ToList(), "wil_id", "wil_name");
                             return View(t_report);
                         }
                     }
@@ -136,7 +136,7 @@ namespace E_Sosial.Areas.admin.Controllers
             }
             else
             {
-                ViewBag.wilayah = new SelectList(db.t_wilayah.ToList(), "wil_id", "wil_name");
+                ViewBag.wilayah = new SelectList((from table in db.t_wilayah where table.wil_type == "Kelurahan" select table).ToList(), "wil_id", "wil_name");
                 return View(t_report);
             }
         }
@@ -168,7 +168,7 @@ namespace E_Sosial.Areas.admin.Controllers
 
                                }).FirstOrDefault();
 
-                ViewBag.wilayah = new SelectList(db.t_wilayah.ToList(), "wil_id", "wil_name");
+                ViewBag.wilayah = new SelectList((from table in db.t_wilayah where table.wil_type == "Kelurahan" select table).ToList(), "wil_id", "wil_name");
                 if (bencana == null)
                 {
                     return HttpNotFound();
@@ -192,7 +192,7 @@ namespace E_Sosial.Areas.admin.Controllers
 
                                }).FirstOrDefault();
 
-                ViewBag.wilayah = new SelectList(db.t_wilayah.ToList(), "wil_id", "wil_name");
+                ViewBag.wilayah = new SelectList((from table in db.t_wilayah where table.wil_type == "Kelurahan" select table).ToList(), "wil_id", "wil_name");
                 if (bencana == null)
                 {
                     return HttpNotFound();
@@ -258,14 +258,14 @@ namespace E_Sosial.Areas.admin.Controllers
                             else
                             {
                                 ModelState.AddModelError("", "Gambar harus berformat (.jpg)");
-                                ViewBag.wilayah = new SelectList(db.t_wilayah.ToList(), "wil_id", "wil_name");
+                                ViewBag.wilayah = new SelectList((from table in db.t_wilayah where table.wil_type == "Kelurahan" select table).ToList(), "wil_id", "wil_name");
                                 return View(model);
                             }
                         }
                         else
                         {
                             ModelState.AddModelError("", "Ukuran gambar tidak boleh lebih dari 2 MB");
-                            ViewBag.wilayah = new SelectList(db.t_wilayah.ToList(), "wil_id", "wil_name");
+                            ViewBag.wilayah = new SelectList((from table in db.t_wilayah where table.wil_type == "Kelurahan" select table).ToList(), "wil_id", "wil_name");
                             return View(model);
                         }
                     }
@@ -277,7 +277,7 @@ namespace E_Sosial.Areas.admin.Controllers
             }
             else
             {
-                ViewBag.wilayah = new SelectList(db.t_wilayah.ToList(), "wil_id", "wil_name");
+                ViewBag.wilayah = new SelectList((from table in db.t_wilayah where table.wil_type == "Kelurahan" select table).ToList(), "wil_id", "wil_name");
                 return View(model);
             }
         }

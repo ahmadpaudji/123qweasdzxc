@@ -21,6 +21,7 @@ namespace E_Sosial.Areas.admin.Models
         public string url { get; set; }
         public System.DateTime content_time { get; set; }
 
+        public HttpPostedFileBase gambar { get; set; }
         public HttpPostedFileBase file { get; set; }
     }
 }

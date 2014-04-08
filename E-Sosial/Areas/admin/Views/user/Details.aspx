@@ -26,7 +26,7 @@
                         <div class="content np">
                             <div class="controls-row">
                                 <div class="span4">
-                                    <img width="50" height="50" src="/Areas/admin/img/examples/users/tes.jpg" class="img-polaroid" style="margin-bottom: 5px;" />
+                                    <a href="<%: Url.Action("EditFoto", new { id=Model.id_user })%>"><img width="50" height="50" src="<%: Url.Content(ViewBag.fotoUser) %>" class="img-polaroid" style="margin-bottom: 5px;" /></a>
                                 </div>
                             </div>      
                             <div class="controls-row">

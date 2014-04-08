@@ -89,13 +89,23 @@
                 <!--User-->
                 <div class="user">
                     <div class="pic">
-                        <img width="26" height="26" src="/Areas/admin/img/examples/users/tes.jpg" />
+                        <%  E_Sosial.db_esosEntities db = new E_Sosial.db_esosEntities();
+                            var idUser = db.users.FirstOrDefault(idU => idU.username == Context.User.Identity.Name).id_user;
+                            ViewBag.info = db.users.FirstOrDefault(id => id.id_user == idUser).nama;
+                            var foto = (from table in db.t_file where table.user_id == idUser && table.file_category == "FotoUser" select table.file_url).FirstOrDefault();
+                            if (foto != null)
+                            {
+                                ViewBag.userFoto = foto;
+                            }
+                            else
+                            {
+                                ViewBag.userFoto = "~/Content/Image/nofoto.jpg";
+                            }
+                        %>
+                        <img width="26" height="26" src="<%: Url.Content(ViewBag.userFoto) %>" />
                     </div>
                     <div class="info">
                         <div class="name">
-                            <%--<%: Html.Encode(Context.User.Identity.Name) %>--%>
-                            <%  E_Sosial.db_esosEntities db = new E_Sosial.db_esosEntities();
-                                ViewBag.info = db.users.FirstOrDefault(id => id.username == Context.User.Identity.Name).nama;%>
                             <%: ViewBag.info %>
                         </div>
                     </div>
@@ -157,7 +167,7 @@
                         <%: Html.ActionLink("Seksi","Index","seksi") %>
                     </li>
                     <li class="openable">
-                        <a href="#">Album Dokumentasi</a>
+                        <a href="#">Dokumentasi</a>
                         <ul>
                             <li>
                                 <%: Html.ActionLink("Foto","Index","foto") %>

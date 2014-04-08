@@ -180,6 +180,7 @@
     <Compile Include="Areas\admin\Models\DownloadCreate.cs" />
     <Compile Include="Areas\admin\Models\DownloadUpdate.cs" />
     <Compile Include="Areas\admin\Models\Foto.cs" />
+    <Compile Include="Areas\admin\Models\FotoAdmin.cs" />
     <Compile Include="Areas\admin\Models\FotoCreate.cs" />
     <Compile Include="Areas\admin\Models\FotoUpdate.cs" />
     <Compile Include="Areas\admin\Models\Kesejahteraan.cs" />
@@ -624,6 +625,7 @@
     <Content Include="Areas\admin\Views\user\Delete.aspx" />
     <Content Include="Areas\admin\Views\user\Details.aspx" />
     <Content Include="Areas\admin\Views\user\Edit.aspx" />
+    <Content Include="Areas\admin\Views\user\EditFoto.aspx" />
     <Content Include="Areas\admin\Views\user\EditUser.aspx" />
     <Content Include="Areas\admin\Views\user\Index.aspx" />
     <Content Include="Areas\admin\Views\video\Create.aspx" />
