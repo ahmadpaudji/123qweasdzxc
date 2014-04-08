@@ -141,6 +141,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\adminController.cs" />
     <Compile Include="Areas\admin\Controllers\albumController.cs" />
@@ -191,7 +192,14 @@
     <Compile Include="Areas\admin\Models\SeksiCreate.cs" />
     <Compile Include="Areas\admin\Models\SeksiUpdate.cs" />
     <Compile Include="Areas\admin\Models\Upload.cs" />
+    <Compile Include="Controllers\BeritaController.cs" />
+    <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KecamatanController.cs" />
+    <Compile Include="Controllers\KelurahanController.cs" />
+    <Compile Include="Controllers\ProfilController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\widgetController.cs" />
     <Compile Include="db_esos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -213,6 +221,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Berita.cs" />
+    <Compile Include="Models\Kecamatan.cs" />
+    <Compile Include="Models\Kelurahan.cs" />
+    <Compile Include="Models\Pmks.cs" />
+    <Compile Include="Models\Psks.cs" />
+    <Compile Include="Models\userModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="role.cs">
       <DependentUpon>db_esos.tt</DependentUpon>
@@ -633,8 +647,175 @@
     <Content Include="Areas\admin\Views\video\Details.aspx" />
     <Content Include="Areas\admin\Views\video\Edit.aspx" />
     <Content Include="Areas\admin\Views\video\Index.aspx" />
+    <Content Include="assets\jquery\jquery-1.4.4.js" />
+    <Content Include="assets\jquery\jquery-1.8.0.js" />
+    <Content Include="assets\jquery\jquery-1.8.0.min.js" />
+    <Content Include="assets\public\css\main.css" />
+    <Content Include="assets\public\css\reset.css" />
+    <Content Include="assets\public\css\style.css" />
+    <Content Include="assets\public\img\accordionArrow.png" />
+    <Content Include="assets\public\img\arrow.png" />
+    <Content Include="assets\public\img\arrow13.png" />
+    <Content Include="assets\public\img\arrows1.png" />
+    <Content Include="assets\public\img\bar.png" />
+    <Content Include="assets\public\img\bg_ut.jpg" />
+    <Content Include="assets\public\img\blockquote1.png" />
+    <Content Include="assets\public\img\blockquote2.png" />
+    <Content Include="assets\public\img\blog\avatar.jpg" />
+    <Content Include="assets\public\img\blog\avatar2.jpg" />
+    <Content Include="assets\public\img\blog\foto_1.png" />
+    <Content Include="assets\public\img\blog\foto_2.png" />
+    <Content Include="assets\public\img\blog\img1.jpg" />
+    <Content Include="assets\public\img\blog\img2.jpg" />
+    <Content Include="assets\public\img\buttonbg.png" />
+    <Content Include="assets\public\img\buttonbgHover.png" />
+    <Content Include="assets\public\img\cc.png" />
+    <Content Include="assets\public\img\check.png" />
+    <Content Include="assets\public\img\color.png" />
+    <Content Include="assets\public\img\events\e1.jpg" />
+    <Content Include="assets\public\img\events\e1_gray.jpg" />
+    <Content Include="assets\public\img\events\e1_large_gallery.jpg" />
+    <Content Include="assets\public\img\events\e2.jpg" />
+    <Content Include="assets\public\img\events\e2_gray.jpg" />
+    <Content Include="assets\public\img\events\e2_large_gallery.jpg" />
+    <Content Include="assets\public\img\events\e3.jpg" />
+    <Content Include="assets\public\img\events\e3_gray.jpg" />
+    <Content Include="assets\public\img\events\e3_large_gallery.jpg" />
+    <Content Include="assets\public\img\events\e4.jpg" />
+    <Content Include="assets\public\img\events\e4_gray.jpg" />
+    <Content Include="assets\public\img\events\e4_large_gallery.jpg" />
+    <Content Include="assets\public\img\events\e5.jpg" />
+    <Content Include="assets\public\img\events\e5_gray.jpg" />
+    <Content Include="assets\public\img\events\e5_large_gallery.jpg" />
+    <Content Include="assets\public\img\events\e6.jpg" />
+    <Content Include="assets\public\img\events\e6_gray.jpg" />
+    <Content Include="assets\public\img\events\e7_large_gallery.png" />
+    <Content Include="assets\public\img\events\foto_1.jpg" />
+    <Content Include="assets\public\img\events\foto_2.jpg" />
+    <Content Include="assets\public\img\events\foto_3.jpg" />
+    <Content Include="assets\public\img\events\foto_4.jpg" />
+    <Content Include="assets\public\img\events\foto_5.jpg" />
+    <Content Include="assets\public\img\favicon.ico" />
+    <Content Include="assets\public\img\headers\header.png" />
+    <Content Include="assets\public\img\headers\header_1.jpg" />
+    <Content Include="assets\public\img\headers\header_2.jpg" />
+    <Content Include="assets\public\img\home-title-2-bg.gif" />
+    <Content Include="assets\public\img\icon-facebook.png" />
+    <Content Include="assets\public\img\icon-facebook2.png" />
+    <Content Include="assets\public\img\icon-linkedin2.png" />
+    <Content Include="assets\public\img\icon-skype2.png" />
+    <Content Include="assets\public\img\icon-twitter.png" />
+    <Content Include="assets\public\img\icon-twitter2.png" />
+    <Content Include="assets\public\img\kepala.jpg" />
+    <Content Include="assets\public\img\lightbox\close.png" />
+    <Content Include="assets\public\img\lightbox\loading.gif" />
+    <Content Include="assets\public\img\linkImg.png" />
+    <Content Include="assets\public\img\listIcons.png" />
+    <Content Include="assets\public\img\loginArrow.png" />
+    <Content Include="assets\public\img\loginbuttonbg.png" />
+    <Content Include="assets\public\img\logo.png" />
+    <Content Include="assets\public\img\mail.png" />
+    <Content Include="assets\public\img\mail1.png" />
+    <Content Include="assets\public\img\mail2.png" />
+    <Content Include="assets\public\img\no_image.png" />
+    <Content Include="assets\public\img\other\facebook.png" />
+    <Content Include="assets\public\img\other\img-donasi.png" />
+    <Content Include="assets\public\img\other\img-download.png" />
+    <Content Include="assets\public\img\other\img-kds.png" />
+    <Content Include="assets\public\img\other\img-v-prog.png" />
+    <Content Include="assets\public\img\other\img-visit.png" />
+    <Content Include="assets\public\img\other\lapor.png" />
+    <Content Include="assets\public\img\other\news.png" />
+    <Content Include="assets\public\img\other\news1.png" />
+    <Content Include="assets\public\img\other\news2.png" />
+    <Content Include="assets\public\img\other\news3.png" />
+    <Content Include="assets\public\img\other\phone.png" />
+    <Content Include="assets\public\img\other\twitter.png" />
+    <Content Include="assets\public\img\other\welcome.jpg" />
+    <Content Include="assets\public\img\pgNr.png" />
+    <Content Include="assets\public\img\phone.png" />
+    <Content Include="assets\public\img\point.png" />
+    <Content Include="assets\public\img\postTime.png" />
+    <Content Include="assets\public\img\preloader.gif" />
+    <Content Include="assets\public\img\professors\1st.jpg" />
+    <Content Include="assets\public\img\professors\bid1.jpg" />
+    <Content Include="assets\public\img\professors\bid3.jpg" />
+    <Content Include="assets\public\img\professors\bid3_2.jpg" />
+    <Content Include="assets\public\img\professors\bid4_1.jpg" />
+    <Content Include="assets\public\img\professors\bid4_2.jpg" />
+    <Content Include="assets\public\img\professors\bid5_2.jpg" />
+    <Content Include="assets\public\img\professors\bid6.jpg" />
+    <Content Include="assets\public\img\professors\bid6_1.jpg" />
+    <Content Include="assets\public\img\professors\bid6_2.jpg" />
+    <Content Include="assets\public\img\professors\no_image.jpg" />
+    <Content Include="assets\public\img\professors\p1.jpg" />
+    <Content Include="assets\public\img\professors\p2.jpg" />
+    <Content Include="assets\public\img\professors\p3.jpg" />
+    <Content Include="assets\public\img\professors\p4.jpg" />
+    <Content Include="assets\public\img\professors\p5.png" />
+    <Content Include="assets\public\img\professors\p6.png" />
+    <Content Include="assets\public\img\professors\p_asep.jpg" />
+    <Content Include="assets\public\img\professors\p_Dewi.jpg" />
+    <Content Include="assets\public\img\professors\p_ecih.jpg" />
+    <Content Include="assets\public\img\professors\p_euis.jpg" />
+    <Content Include="assets\public\img\professors\p_iis.jpg" />
+    <Content Include="assets\public\img\professors\p_ipah.jpg" />
+    <Content Include="assets\public\img\professors\p_kelly.jpg" />
+    <Content Include="assets\public\img\professors\p_medi.jpg" />
+    <Content Include="assets\public\img\professors\p_no_image.jpg" />
+    <Content Include="assets\public\img\professors\p_pipin.jpg" />
+    <Content Include="assets\public\img\professors\p_yanti.jpg" />
+    <Content Include="assets\public\img\professors\p_yoga.jpg" />
+    <Content Include="assets\public\img\recentPost.png" />
+    <Content Include="assets\public\img\relawan.png" />
+    <Content Include="assets\public\img\sliderArrows1.png" />
+    <Content Include="assets\public\img\sliderArrows2.png" />
+    <Content Include="assets\public\img\slider\1st.jpg" />
+    <Content Include="assets\public\img\slider\1st_thumb.jpg" />
+    <Content Include="assets\public\img\slider\2nd.jpg" />
+    <Content Include="assets\public\img\slider\2nd_thumb.jpg" />
+    <Content Include="assets\public\img\slider\3rd.jpg" />
+    <Content Include="assets\public\img\slider\3rd_thumb.jpg" />
+    <Content Include="assets\public\img\slider\4th.jpg" />
+    <Content Include="assets\public\img\slider\4th_thumb.jpg" />
+    <Content Include="assets\public\img\socialButton.png" />
+    <Content Include="assets\public\img\socialImg.png" />
+    <Content Include="assets\public\img\struktur_organisasi.jpg" />
+    <Content Include="assets\public\img\struktur_organisasi.png" />
+    <Content Include="assets\public\img\toggleArrow.png" />
+    <Content Include="assets\public\img\twitter.png" />
+    <Content Include="assets\public\js\html5shiv.js" />
+    <Content Include="assets\public\js\jquery-1.4.4.min.js" />
+    <Content Include="assets\public\js\jquery.flexslider-min.js" />
+    <Content Include="assets\public\js\jquery.flexslider.js" />
+    <Content Include="assets\public\js\lightbox.js" />
+    <Content Include="assets\public\js\login.js" />
+    <Content Include="assets\public\js\scripts.js" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Berita\Detail.aspx" />
+    <Content Include="Views\Berita\Index.aspx" />
+    <Content Include="Views\Berita\listBerita.aspx" />
+    <Content Include="Views\Berita\View.aspx" />
+    <Content Include="Views\Data\Pmks.aspx" />
+    <Content Include="Views\Data\Psks.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Kecamatan\Index.aspx" />
+    <Content Include="Views\Kecamatan\ListKecamatan.aspx" />
+    <Content Include="Views\Kelurahan\Index.aspx" />
+    <Content Include="Views\Profil\Kontak.aspx" />
+    <Content Include="Views\Profil\ProgramKerja.aspx" />
+    <Content Include="Views\Profil\StrukturOrganisasi.aspx" />
+    <Content Include="Views\Profil\VisiMisi.aspx" />
+    <Content Include="Views\widget\acara.aspx" />
+    <Content Include="Views\widget\alamat.aspx" />
+    <Content Include="Views\widget\beritaTerkait.aspx" />
+    <Content Include="Views\widget\centralLink.aspx" />
+    <Content Include="Views\widget\donasi.aspx" />
+    <Content Include="Views\widget\folowus.aspx" />
+    <Content Include="Views\widget\kategoriBerita.aspx" />
+    <Content Include="Views\widget\kepalaDinsos.aspx" />
+    <Content Include="Views\widget\programRelawan.aspx" />
+    <Content Include="Views\widget\vProg.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -649,7 +830,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\css\img\" />
-    <Folder Include="Models\" />
+    <Folder Include="assets\admin\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -694,6 +876,16 @@
       <DependentUpon>db_esos.edmx</DependentUpon>
       <LastGenOutput>db_esos.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\public\file\TUPOKSI1.pdf" />
+    <Content Include="assets\public\file\VISI_MISI_DINAS_SOSIAL_KAB._BANDUNG_.pdf" />
+    <Content Include="assets\public\img\csa.psd" />
+    <Content Include="assets\public\img\professors\Edit img_profesor.psd" />
+    <Content Include="assets\public\img\professors\Edit img_profil.psd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Public.Master" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,148 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js ie ie8"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><asp:ContentPlaceHolder ID="TitleContent" runat="server"/></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<%: Styles.Render("~/assets/public/css/main") %>
+	<link rel="shortcut icon" type="image/x-icon" href="<%: Url.Content("~/assets/public/img/favicon.ico") %>" />
+	<!--[if lt IE 9]>
+		<%: Scripts.Render("~/assets/public/js/ie9") %>
+	<![endif]-->
+</head>
+<body>
+	<header>
+		<!-- ================  MENU ======================= --> 
+		<div>
+			<div id="menu">
+				<section>
+					<a href="<%: Url.Content("~/")%>"><img src="<%: Url.Content("~/assets/public/img/logo.png") %>" alt=""></a>
+					<ul class="clearfix">
+						<li class="selected"><%=Html.ActionLink("Beranda", "index", "home")%></li>
+						<li><a href="#">Profil</a>
+							<ul class="sub-menu">
+								<li><%=Html.ActionLink("Struktur Organisasi", "StrukturOrganisasi", "Profil")%></li>
+								<li><%=Html.ActionLink("Visi dan Misi", "VisiMisi", "Profil")%></li>
+								<li><%=Html.ActionLink("Program Kerja", "ProgramKerja", "Profil")%></li>
+							</ul>
+						</li>
+						<li><a href="#">Bidang</a>
+							<ul class="sub-menu">
+								<li><a href="bid_1.html">Umum & Kepegawaian</a></li>
+                                <li><a href="bid_2.html">Keuangan & Program </a></li>
+								<li><a href="bid_3.html">Parsos & Masyarakat</a></li>
+								<li><a href="bid_4.html">Rehabilitasi Sosial</a></li>
+								<li><a href="bid_5.html">Pelayanan Sosial</a></li>
+								<li><a href="bid_6.html">Pembinaan Rawan Sosial</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Relawan</a>
+							<ul class="sub-menu">
+								<li><a href="vprog_daftar.html">Daftar</a></li>
+								<li><a href="vprog_peserta.html">Peserta</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Dokumentasi</a>
+							<ul class="sub-menu">
+								<li><a href="dokumentasi_foto.html">Foto</a></li>
+								<li><a href="dokumentasi_video.html">Video</a></li>
+							</ul>
+						</li>
+						<li><%=Html.ActionLink("Berita", "index", "Berita")%></li>
+						<li><a href="#">Prosedur</a>
+							<ul class="sub-menu">
+								<li><a href="pro_penelitian.html">Info Penelitian</a></li>
+								<li><a href="pro_kp.html">Kerja Praktek</a></li>
+								<li><a href="pro_donasi.html">Donasi</a></li>
+                                <li><a href="pro_abh.html">ABH</a></li>
+								<li><a href="pro_yayasan.html">Yayasan</a></li>
+								<li><a href="pro_psikotik.html">Psikotik</a></li>
+                                <li><a href="pro_ankn.html">ANKN</a></li>
+								<li><a href="pro_paca.html">PACA</a></li>
+							</ul>
+						</li>
+                        
+                        <li><a href="#">CSR</a>
+                        <ul class="sub-menu">
+                                <li><%=Html.ActionLink("Perusahaan", "Perusahaan", "Data")%></li>
+								<li><%=Html.ActionLink("Kegiatan", "Kegiatan", "Data")%></li>
+							</ul>
+                        </li>  
+                        
+                                                
+						<li><a href="#">Wilayah</a>
+							<ul class="sub-menu">
+								<li><%=Html.ActionLink("Kecamatan", "index", "kecamatan")%></li>
+								<li><%=Html.ActionLink("kelurahan", "index", "kelurahan")%></li>
+							</ul>
+						</li>
+						<li><%=Html.ActionLink("PMKS", "Pmks", "Data")%></li>
+						<li><%=Html.ActionLink("PSKS", "Psks", "Data")%></li>
+
+						<li><a href="download.html">Download</a></li>
+						<li><%=Html.ActionLink("Kontak", "kontak", "profil")%></li>
+					</ul>
+				</section>
+			</div> <!-- End menu -->
+		</div>
+		<!-- ============== END MENU ====================== --> 
+	</header>
+	<!-- ================ CONTENT ======================== --> 
+	<asp:ContentPlaceHolder ID="MainContent" runat="server">
+	</asp:ContentPlaceHolder>
+	<!-- ============== END CONTENT ====================== --> 
+	<!-- ================ FOOTER ======================== --> 
+	<footer>
+		<div id="footerContent" >
+			<section>
+				<div class="clearfix">
+					<div class="links column c-40 clearfix ">
+						<h3>Links</h3>
+						<ul>
+							<li><a href="http://www.kemsos.go.id/" target="_blank">Kemensos Republik Indonesia</a></li>
+							<li><a href="http://dissos.jabarprov.go.id/" target="_blank">Dinsos Jawa Barat</a></li>
+							<li><a href="http://www.jabarprov.go.id/" target="_blank">Pemprov Jawa Barat</a></li>
+							<li><a href="http://bandung.go.id/rwd/index.php" target="_blank">Pemkot Bandung</a></li>
+							<li><a href="http://bandungjuara.com/" target="_blank">Bandung Juara</a></li>
+						</ul>
+					</div>
+					<div class="links column c-30 clearfix ">
+						<h3>Daftar Kecamatan</h3>
+						<% Html.RenderAction("listKecamatan", "Kecamatan", new { s = 0, c = 5 }); %>
+					</div>
+					<div class="links column c-30 clearfix ">
+						<br><br>
+						<% Html.RenderAction("listKecamatan", "Kecamatan", new { s = 5, c = 5 }); %>
+					</div>
+                    <div class="links column c-30 clearfix ">
+                    <br><br>
+						<% Html.RenderAction("listKecamatan", "Kecamatan", new { s = 10, c = 5 }); %>
+					</div>
+                    
+				</div>
+				<div id="bottomFooter">
+					<p>Copyright © Dinas Sosial Kota Bandung 2014. All Rights Reserved</p>
+				</div>
+			</section>
+		</div>
+	</footer>
+	<!-- ============== END FOOTER ====================== --> 
+	<%: Scripts.Render("~/assets/jquery/js") %>
+	<script type="text/javascript">
+		if (typeof jQuery == 'undefined') {
+			var e = document.createElement('script');
+			e.src = '<%: Url.Content("~/assets/jquery/jquery-1.8.0.min.js")%>';
+			e.type = 'text/javascript';
+			document.getElementsByTagName("head")[0].appendChild(e);
+		}
+	</script>
+	<%: Scripts.Render("~/assets/public/js/bundle") %>
+	<asp:ContentPlaceHolder ID="scriptContent" runat="server">
+	</asp:ContentPlaceHolder>
+</body>
+</html>

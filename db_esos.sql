@@ -29,7 +29,7 @@ CREATE TABLE `detail_roles` (
 
 /*Data for the table `detail_roles` */
 
-insert  into `detail_roles`(`id_detail_roles`,`id_user`,`id_roles`) values (1,2,1),(4,6,2),(3,5,1),(5,7,1),(6,8,2);
+insert  into `detail_roles`(`id_detail_roles`,`id_user`,`id_roles`) values (1,2,1),(2,3,1),(4,6,2),(3,5,1),(5,7,1),(6,8,2);
 
 /*Table structure for table `roles` */
 
@@ -438,7 +438,12 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`id_user`,`username`,`user_password`,`user_passwordsalt`,`nama`,`email`,`hp`,`alamat`,`tanggal`) values (2,'hxlines','N0Q9S4g1kQe+3Uh5ywgy2BbA+B9ugZDv3LnBfTMHZFtjoZjt5ElVDmWvWzYIUInoOXPfTdegeyqxfK+1HFqoDw==','100000.T44tAvIE2oLj0YGqFuxx6lfsoSd9pFawmmSHX57s7GmSfQ==','Handoyo','dyo.9913@gamil.com','087871942562','Serang','2014-04-05 15:04:27'),(5,'admin','7reRmLWFf/Y5BHJ3MdNixVRMPhnJjGeb/EbAF8jNITIwDG8kN7JCzPTWAFNy86xsdkJ31SDkynpd85Kf3ZXWwg==','100000.WWXoZsGtpgFEdI0Fr4biCd44bFDQpVPXr9VnElJvzw0e4A==','Zakky chibi','zakkyMoetz@moetz.com','123334324322','Tangerang','2014-04-07 18:37:14'),(6,'admina','gkP/6LOlwdecl0EpHLkH5rQ4R0mAkOaCULddGRqqWiPhzUghN0LbyFglEr1ocRGY/mnZfHBKrItU2x+C582X5g==','100000.09q4EKK6lFuKOptFDGMh5jWh6a7kw0AUpKwzvRBJkvPDVw==','Meidi','adawd@dawd.com','087871942562','Bandung','2014-04-05 15:46:38'),(7,'ahmadpaudji','T9VhlLfXAzsL9bofQamXoU7cpq7mWvTUJc20y4KHQpewQArOXjxaJRS+xSnsd0L4bcDIyPWAL1kM6ChCxQ4fxw==','100000.rI1PsP8+0nKjvt83UEuQAVt6YRI87NM9axc1mRpEnhqxmg==','Ahmad Paudji','ahmadpaudji@gmail.com','085752225126','Jalan Titiran No.2','2014-04-07 17:55:29');
+insert  into `user`(`id_user`,`username`,`user_password`,`user_passwordsalt`,`nama`,`email`,`hp`,`alamat`,`tanggal`) 
+	values (2,'hxlines','N0Q9S4g1kQe+3Uh5ywgy2BbA+B9ugZDv3LnBfTMHZFtjoZjt5ElVDmWvWzYIUInoOXPfTdegeyqxfK+1HFqoDw==','100000.T44tAvIE2oLj0YGqFuxx6lfsoSd9pFawmmSHX57s7GmSfQ==','Handoyo','dyo.9913@gamil.com','087871942562','Serang','2014-04-05 15:04:27'),
+	(3, 'adit', 'LnNGTm4r2AvJHsWGdoZMMS22/j65aONgv0qkN9jcNcUqRN/nxkpzXnWelvv8TSSRuNsOqB5sG430EjnCMbfpUA==', '100000.gY4cQLx95cS7B3UHdGBzYle2+FSE7imdsA75kUQ/y6l2RQ==', 'adit', 'adit@adit.com', 12, '-', '2014-03-20 15:17:53'),
+	(5,'admin','7reRmLWFf/Y5BHJ3MdNixVRMPhnJjGeb/EbAF8jNITIwDG8kN7JCzPTWAFNy86xsdkJ31SDkynpd85Kf3ZXWwg==','100000.WWXoZsGtpgFEdI0Fr4biCd44bFDQpVPXr9VnElJvzw0e4A==','Zakky chibi','zakkyMoetz@moetz.com','123334324322','Tangerang','2014-04-07 18:37:14'),
+	(6,'admina','gkP/6LOlwdecl0EpHLkH5rQ4R0mAkOaCULddGRqqWiPhzUghN0LbyFglEr1ocRGY/mnZfHBKrItU2x+C582X5g==','100000.09q4EKK6lFuKOptFDGMh5jWh6a7kw0AUpKwzvRBJkvPDVw==','Meidi','adawd@dawd.com','087871942562','Bandung','2014-04-05 15:46:38'),
+	(7,'ahmadpaudji','T9VhlLfXAzsL9bofQamXoU7cpq7mWvTUJc20y4KHQpewQArOXjxaJRS+xSnsd0L4bcDIyPWAL1kM6ChCxQ4fxw==','100000.rI1PsP8+0nKjvt83UEuQAVt6YRI87NM9axc1mRpEnhqxmg==','Ahmad Paudji','ahmadpaudji@gmail.com','085752225126','Jalan Titiran No.2','2014-04-07 17:55:29');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
