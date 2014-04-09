@@ -49,21 +49,14 @@
 						</li>
 						<li><a href="#">Dokumentasi</a>
 							<ul class="sub-menu">
-								<li><a href="dokumentasi_foto.html">Foto</a></li>
-								<li><a href="dokumentasi_video.html">Video</a></li>
+								<li><%=Html.ActionLink("Foto", "Foto", "Dokumentasi")%></li>
+								<li><%=Html.ActionLink("Video", "Video", "Dokumentasi")%></li>
 							</ul>
 						</li>
 						<li><%=Html.ActionLink("Berita", "index", "Berita")%></li>
 						<li><a href="#">Prosedur</a>
 							<ul class="sub-menu">
-								<li><a href="pro_penelitian.html">Info Penelitian</a></li>
-								<li><a href="pro_kp.html">Kerja Praktek</a></li>
-								<li><a href="pro_donasi.html">Donasi</a></li>
-                                <li><a href="pro_abh.html">ABH</a></li>
-								<li><a href="pro_yayasan.html">Yayasan</a></li>
-								<li><a href="pro_psikotik.html">Psikotik</a></li>
-                                <li><a href="pro_ankn.html">ANKN</a></li>
-								<li><a href="pro_paca.html">PACA</a></li>
+								<% Html.RenderAction("listProsedur", "Prosedur"); %>
 							</ul>
 						</li>
                         

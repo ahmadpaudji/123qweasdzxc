@@ -29,7 +29,8 @@
 				</ul>
 			</div>
             
-			<div class="wrapper" style="margin-left:0px;">
+			<!--<div class="wrapper" style="margin-left:0px;">-->
+			<div>
 				<div class="clear"></div>
 				<!-- ================  LEFT ======================= -->
 				<div class=" column c-1 clearfix">
@@ -106,7 +107,7 @@
 				</div> <!-- END  -->
 			</div> <!-- End Clear 1 -->
 			<div class="clearfix"></div>
-			<div class="wrapper"  style="clear:both">
+			<div class=""  style="clear:both">
 				<div class="column c-3 clearfix">
 					<div class="box">
 						<h5>MOU CSR</h5>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using E_Sosial.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,17 @@ namespace E_Sosial.Controllers
 {
     public class widgetController : Controller
 	{
+
+		// GET: /widget/kategoriBerita
+
+		[ChildActionOnly]
+		public ActionResult listAlbum()
+		{
+			var tAlbum = new Album();
+			var listAlbum = tAlbum.getList();
+			ViewBag.actionName = System.Web.HttpContext.Current.Request.RequestContext.RouteData.GetRequiredString("action");
+			return PartialView(listAlbum);
+		}
 
 		// GET: /widget/kepalaDinsos
 
@@ -30,7 +42,9 @@ namespace E_Sosial.Controllers
 		[ChildActionOnly]
 		public ActionResult kategoriBerita()
 		{
-			return PartialView();
+			var tKat = new BeritaKategori();
+			var listKat = tKat.getList();
+			return PartialView(listKat);
 		}
 
 		// GET: /widget/alamat

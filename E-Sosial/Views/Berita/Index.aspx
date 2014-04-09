@@ -4,7 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<div id="contentBk">
 		<div id="content" class="clearfix">
-			<div class="wrapper" style="margin-left:0px;">
+			<!--<div class="wrapper" style="margin-left:0px;">-->
+			<div>
 				<div class="clear"></div>
 				<!-- ================  LEFT ======================= -->
 				<div class=" column c-1 clearfix">

@@ -8,8 +8,6 @@ namespace E_Sosial.viewModels
 	public class Berita : t_news
 	{
 		db_esosEntities db_esos = new db_esosEntities();
-		//public t_news berita;
-		//public user user;
 		public string user_nama;
 		public string gambar;
 

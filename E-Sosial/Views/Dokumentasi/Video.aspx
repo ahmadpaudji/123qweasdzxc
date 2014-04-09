@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Public.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">E-SOS | Berita - <%= Model.news_title %></asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">E-SOS | Video</asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div id="fb-root"></div>
@@ -18,9 +18,8 @@
 				<div class="clear"></div>
 				<!-- ================  LEFT ======================= -->
 				<div class=" column c-1 clearfix">
-					<% Html.RenderAction("kepalaDinsos", "Widget"); %>
+					<% Html.RenderAction("listAlbum", "Widget"); %>
 					<% Html.RenderAction("programRelawan", "Widget"); %>
-					<% Html.RenderAction("kategoriBerita", "Widget"); %>
 					<div class="clearfix">&nbsp;</div>
 					<h3>Donasi Bencana</h3>
 					<div class="cContent">
@@ -38,35 +37,36 @@
 				</div>
 				<!-- ================  MIDDLE ======================= -->
 				<div class="blog column c-2 clearfix">
-					<h3>Berita</h3><br>
+					<h3>Dokumentasi Video</h3><br>
 					<div class="box">
-						<a href="#"><h4><%= Model.news_title %></h4></a>
+						<a href="csr_kegiatandetail.html"><h4><%: ViewBag.album.album_title %></h4></a>
 						<div class="boxInfo examInfo">
 							<ul>
-								<li class="proExm"><a href="#"><%: Model.user_nama %></a></a></li>
-								<li class="dateExm"><%: Model.news_date %></li>
-								<li class="commentExm"><a href="#"><fb:comments-count href=<%: Request.Url.ToString() %>></fb:comments-count> comment</a></li>
+								<li class="proExm"><a href="#"><%: ViewBag.album.user_nama %></a></li>
+								<li class="dateExm"><%: ViewBag.album.album_date %></li>
+								<li style="background-position: -30px -200px;"></li>
 								<li style="background-position: -30px -200px;"></li>
 							</ul>
+							<% foreach (var item in ViewBag.listVideo) { %>
+                            <h3><%: item.dokumentasi_title %></h3><br>
+							<!--
+							<iframe class="fwidth" src="<%: Url.Content(item.dokumentasi_path) %>" width="303" height="170"  webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+							-->
+							<video class="fwidth" controls>
+								<source src="<%: Url.Content(item.dokumentasi_path) %>" type="video/mp4">
+								Your browser does not support the video tag.
+							</video>
+							<% } %>
+							<div class="clearFix" style="clear:both;"></div>
 							<div>
-								<% if (Model.gambar != null) { %>
-								<img class="fwidth" src="<%: Url.Content(Model.gambar) %>" alt="">
+								<h3>Keterangan</h3>
+								<% if (ViewBag.album.album_desc != null) { %>
+								<%: ViewBag.album.album_desc %>
 								<% } %>
-								<%: 
-									Html.Raw(Model.news_content) 
-								%>
-								<br />
+								<br>
 								<div class="fb-like" data-href="<%: Request.Url.ToString() %>" data-width="300" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
-								<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%: Request.Url.ToString() %>" data-text="<%= Model.news_title %>" data-via="E-Sos" data-hashtags="E_Sos\">Tweet</a>
-								<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
-							</div>
-						</div>
-					</div>
-					<div class="box">
-						<a href="#"><h4>Komentar</h4></a>
-						<div class="boxInfo examInfo">
-							<div>
-								<div class="fb-comments" data-href="<%: Request.Url.ToString() %>" data-width="500" data-numposts="5" data-colorscheme="light"></div>
+								<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%: Request.Url.ToString() %>" data-text="<%: ViewBag.album.album_title %>" data-via="E-Sos" data-hashtags="E_Sos\">Tweet</a>
+								<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script><br>
 							</div>
 						</div>
 					</div>

@@ -5,7 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<div id="contentBk">
 		<div id="content" class="clearfix">
-			<div class="wrapper" style="margin-left:0px;">
+			<!--<div class="wrapper" style="margin-left:0px;">-->
+			<div>
 				<div class="clear"></div>
 				<!-- ================  LEFT ======================= -->
 				<div class=" column c-1 clearfix">
@@ -41,8 +42,8 @@
 								<li style="background-position: -30px -200px;"></li>
 							</ul>
 							<div>
-								<% if (ViewBag.file_url != null) { %>
-								<img src="<%: Url.Content(ViewBag.file_url) %>" />
+								<% if (Model.file_url != null) { %>
+								<img class="fwidth" src="<%: Url.Content(Model.file_url) %>" />
 								<% } %>
 								<%: Html.Raw(Model.content) %>
                                 <!--

@@ -5,7 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<div id="contentBk">
 		<div id="content" class="clearfix">
-			<div class="wrapper" style="margin-left:0px;">
+			<!--<div class="wrapper" style="margin-left:0px;">-->
+			<div>
 				<div class="clear"></div>
 				<!-- ================  LEFT ======================= -->
 				<div class=" column c-1 clearfix">
@@ -54,6 +55,16 @@
 									</tr>
 								</thead>
 								<tbody>
+									<% int i = 1; %>
+									<% foreach (var item in Model) { %>
+									<tr>
+										<td><%: i++ %></td>
+										<td><%: item.t_nama %></td>
+										<td><img src="<%: Url.Content(item.t_path) %>" class="imgBorder" style="margin:5px;width:102px;"></td>
+										<td><%: item.t_jabatan %></td>
+									</tr>
+									<% } %>
+									<!--
 									<tr>
 										<td>1</td>
 										<td>Drs. Kelly Solihin, M.Si</td>
@@ -150,6 +161,7 @@
 										<td><img src="<%: Url.Content("~/assets/public/img/professors/p_ipah.jpg") %>" class="imgBorder" style="margin:5px;"></td>
 										<td>Seksi Bidang</td>
 									</tr>
+									-->
 								</tbody>
 							</table>
 						</div>

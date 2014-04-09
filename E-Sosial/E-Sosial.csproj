@@ -194,10 +194,12 @@
     <Compile Include="Areas\admin\Models\Upload.cs" />
     <Compile Include="Controllers\BeritaController.cs" />
     <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\DokumentasiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KecamatanController.cs" />
     <Compile Include="Controllers\KelurahanController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
+    <Compile Include="Controllers\ProsedurController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\widgetController.cs" />
     <Compile Include="db_esos.Context.cs">
@@ -221,11 +223,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Berita.cs" />
+    <Compile Include="Models\BeritaKategori.cs" />
     <Compile Include="Models\Content.cs" />
+    <Compile Include="Models\Dokumentasi.cs" />
     <Compile Include="Models\Download.cs" />
     <Compile Include="Models\Kecamatan.cs" />
     <Compile Include="Models\Kelurahan.cs" />
+    <Compile Include="Models\Organisasi.cs" />
     <Compile Include="Models\Pmks.cs" />
     <Compile Include="Models\Psks.cs" />
     <Compile Include="Models\userModel.cs" />
@@ -801,6 +807,8 @@
     <Content Include="Views\Data\Download.aspx" />
     <Content Include="Views\Data\Pmks.aspx" />
     <Content Include="Views\Data\Psks.aspx" />
+    <Content Include="Views\Dokumentasi\Foto.aspx" />
+    <Content Include="Views\Dokumentasi\Video.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Kecamatan\Index.aspx" />
     <Content Include="Views\Kecamatan\ListKecamatan.aspx" />
@@ -809,6 +817,8 @@
     <Content Include="Views\Profil\ProgramKerja.aspx" />
     <Content Include="Views\Profil\StrukturOrganisasi.aspx" />
     <Content Include="Views\Profil\VisiMisi.aspx" />
+    <Content Include="Views\Prosedur\Detail.aspx" />
+    <Content Include="Views\Prosedur\listProsedur.aspx" />
     <Content Include="Views\widget\acara.aspx" />
     <Content Include="Views\widget\alamat.aspx" />
     <Content Include="Views\widget\beritaTerkait.aspx" />
@@ -817,6 +827,7 @@
     <Content Include="Views\widget\folowus.aspx" />
     <Content Include="Views\widget\kategoriBerita.aspx" />
     <Content Include="Views\widget\kepalaDinsos.aspx" />
+    <Content Include="Views\widget\listAlbum.aspx" />
     <Content Include="Views\widget\programRelawan.aspx" />
     <Content Include="Views\widget\vProg.aspx" />
     <Content Include="Web.config">

@@ -14,7 +14,9 @@ namespace E_Sosial.Controllers
 
 		public ActionResult StrukturOrganisasi()
         {
-            return View();
+			var tOrganisasi = new Organisasi();
+			var listOrganisasi = tOrganisasi.getList();
+			return View(listOrganisasi);
         }
 
 		//
