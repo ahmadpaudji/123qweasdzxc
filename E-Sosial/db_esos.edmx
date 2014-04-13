@@ -12,6 +12,8 @@
           <EntitySet Name="t_bidang" EntityType="db_esosModel.Store.t_bidang" store:Type="Tables" Schema="db_esos" />
           <EntitySet Name="t_content" EntityType="db_esosModel.Store.t_content" store:Type="Tables" Schema="db_esos" />
           <EntitySet Name="t_csr" EntityType="db_esosModel.Store.t_csr" store:Type="Tables" Schema="db_esos" />
+          <EntitySet Name="t_csr_activity" EntityType="db_esosModel.Store.t_csr_activity" store:Type="Tables" Schema="db_esos" />
+          <EntitySet Name="t_csr_ph" EntityType="db_esosModel.Store.t_csr_ph" store:Type="Tables" Schema="db_esos" />
           <EntitySet Name="t_dokumentasi" EntityType="db_esosModel.Store.t_dokumentasi" store:Type="Tables" Schema="db_esos" />
           <EntitySet Name="t_donatur" EntityType="db_esosModel.Store.t_donatur" store:Type="Tables" Schema="db_esos" />
           <EntitySet Name="t_download" EntityType="db_esosModel.Store.t_download" store:Type="Tables" Schema="db_esos" />
@@ -89,8 +91,28 @@
           <Property Name="csr_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="csr_name" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="csr_address" Type="text" Nullable="false" />
-          <Property Name="prog_id" Type="uint" Nullable="false" />
           <Property Name="csr_value" Type="ubigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_csr_activity">
+          <Key>
+            <PropertyRef Name="csr_activity_id" />
+          </Key>
+          <Property Name="csr_activity_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="csr_ph_id" Type="int" Nullable="false" />
+          <Property Name="csr_activity_content" Type="text" Nullable="false" />
+          <Property Name="csr_activity_path" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="csr_activity_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_csr_ph">
+          <Key>
+            <PropertyRef Name="csr_ph_id" />
+          </Key>
+          <Property Name="csr_ph_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="csr_ph_name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="csr_ph_address" Type="text" Nullable="false" />
+          <Property Name="csr_ph_activity" Type="text" Nullable="false" />
+          <Property Name="csr_ph_date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="t_dokumentasi">
           <Key>
@@ -152,15 +174,15 @@
         </EntityType>
         <EntityType Name="t_kegiatan">
           <Key>
-            <PropertyRef Name="keg_id" />
+            <PropertyRef Name="kegiatan_id" />
           </Key>
-          <Property Name="keg_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="keg_name" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="keg_description" Type="text" Nullable="false" />
-          <Property Name="keg_focus" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="keg_volume" Type="uint" Nullable="false" />
-          <Property Name="keg_value" Type="ubigint" Nullable="false" />
-          <Property Name="prog_id" Type="uint" Nullable="false" />
+          <Property Name="kegiatan_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="wilayah_id" Type="int" Nullable="false" />
+          <Property Name="kegiatan_nama" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="kegiatan_deskripsi" Type="text" Nullable="false" />
+          <Property Name="kegiatan_tgl_update" Type="datetime" Nullable="false" />
+          <Property Name="kegiatan_tgl_acara" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="t_kesejahteraan">
           <Key>
@@ -283,12 +305,11 @@
           <Property Name="vol_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="vol_card_id" Type="varchar" Nullable="false" MaxLength="18" />
           <Property Name="vol_name" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="wil_id" Type="uint" Nullable="false" />
           <Property Name="vol_phone" Type="varchar" Nullable="false" MaxLength="15" />
           <Property Name="vol_address" Type="text" Nullable="false" />
           <Property Name="vol_occupation" Type="varchar" Nullable="false" MaxLength="40" />
-          <Property Name="vol_email" Type="uint" Nullable="false" />
-          <Property Name="prog_id" Type="int" Nullable="false" />
+          <Property Name="vol_email" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="kegiatan_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="t_wilayah">
           <Key>
@@ -302,6 +323,7 @@
           <Property Name="wil_phone" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="geo_location" Type="text" />
           <Property Name="web_url" Type="varchar" MaxLength="100" />
+          <Property Name="wil_email" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -329,6 +351,8 @@
           <EntitySet Name="t_bidang" EntityType="db_esosModel.t_bidang" />
           <EntitySet Name="t_content" EntityType="db_esosModel.t_content" />
           <EntitySet Name="t_csr" EntityType="db_esosModel.t_csr" />
+          <EntitySet Name="t_csr_activity" EntityType="db_esosModel.t_csr_activity" />
+          <EntitySet Name="t_csr_ph" EntityType="db_esosModel.t_csr_ph" />
           <EntitySet Name="t_dokumentasi" EntityType="db_esosModel.t_dokumentasi" />
           <EntitySet Name="t_donatur" EntityType="db_esosModel.t_donatur" />
           <EntitySet Name="t_download" EntityType="db_esosModel.t_download" />
@@ -406,8 +430,28 @@
           <Property Name="csr_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="csr_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="csr_address" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="prog_id" Type="Int64" Nullable="false" />
           <Property Name="csr_value" Type="Decimal" Nullable="false" Precision="20" Scale="0" />
+        </EntityType>
+        <EntityType Name="t_csr_activity">
+          <Key>
+            <PropertyRef Name="csr_activity_id" />
+          </Key>
+          <Property Name="csr_activity_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="csr_ph_id" Type="Int32" Nullable="false" />
+          <Property Name="csr_activity_content" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="csr_activity_path" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="csr_activity_date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="t_csr_ph">
+          <Key>
+            <PropertyRef Name="csr_ph_id" />
+          </Key>
+          <Property Name="csr_ph_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="csr_ph_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="csr_ph_address" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="csr_ph_activity" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="csr_ph_date" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="t_dokumentasi">
           <Key>
@@ -469,15 +513,15 @@
         </EntityType>
         <EntityType Name="t_kegiatan">
           <Key>
-            <PropertyRef Name="keg_id" />
+            <PropertyRef Name="kegiatan_id" />
           </Key>
-          <Property Name="keg_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="keg_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="keg_description" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="keg_focus" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="keg_volume" Type="Int64" Nullable="false" />
-          <Property Name="keg_value" Type="Decimal" Nullable="false" Precision="20" Scale="0" />
-          <Property Name="prog_id" Type="Int64" Nullable="false" />
+          <Property Name="kegiatan_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="wilayah_id" Type="Int32" Nullable="false" />
+          <Property Name="kegiatan_nama" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="kegiatan_deskripsi" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="kegiatan_tgl_update" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="kegiatan_tgl_acara" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="t_kesejahteraan">
           <Key>
@@ -600,12 +644,11 @@
           <Property Name="vol_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="vol_card_id" Type="String" Nullable="false" MaxLength="18" Unicode="false" FixedLength="false" />
           <Property Name="vol_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="wil_id" Type="Int64" Nullable="false" />
           <Property Name="vol_phone" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
           <Property Name="vol_address" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
           <Property Name="vol_occupation" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
-          <Property Name="vol_email" Type="Int64" Nullable="false" />
-          <Property Name="prog_id" Type="Int32" Nullable="false" />
+          <Property Name="vol_email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="kegiatan_id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="t_wilayah">
           <Key>
@@ -619,6 +662,7 @@
           <Property Name="wil_phone" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="geo_location" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
           <Property Name="web_url" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="wil_email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -701,8 +745,30 @@
                 <ScalarProperty Name="csr_id" ColumnName="csr_id" />
                 <ScalarProperty Name="csr_name" ColumnName="csr_name" />
                 <ScalarProperty Name="csr_address" ColumnName="csr_address" />
-                <ScalarProperty Name="prog_id" ColumnName="prog_id" />
                 <ScalarProperty Name="csr_value" ColumnName="csr_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_csr_activity">
+            <EntityTypeMapping TypeName="db_esosModel.t_csr_activity">
+              <MappingFragment StoreEntitySet="t_csr_activity">
+                <ScalarProperty Name="csr_activity_id" ColumnName="csr_activity_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="csr_ph_id" ColumnName="csr_ph_id" />
+                <ScalarProperty Name="csr_activity_content" ColumnName="csr_activity_content" />
+                <ScalarProperty Name="csr_activity_path" ColumnName="csr_activity_path" />
+                <ScalarProperty Name="csr_activity_date" ColumnName="csr_activity_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_csr_ph">
+            <EntityTypeMapping TypeName="db_esosModel.t_csr_ph">
+              <MappingFragment StoreEntitySet="t_csr_ph">
+                <ScalarProperty Name="csr_ph_id" ColumnName="csr_ph_id" />
+                <ScalarProperty Name="csr_ph_name" ColumnName="csr_ph_name" />
+                <ScalarProperty Name="csr_ph_address" ColumnName="csr_ph_address" />
+                <ScalarProperty Name="csr_ph_activity" ColumnName="csr_ph_activity" />
+                <ScalarProperty Name="csr_ph_date" ColumnName="csr_ph_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -772,13 +838,13 @@
           <EntitySetMapping Name="t_kegiatan">
             <EntityTypeMapping TypeName="db_esosModel.t_kegiatan">
               <MappingFragment StoreEntitySet="t_kegiatan">
-                <ScalarProperty Name="keg_id" ColumnName="keg_id" />
-                <ScalarProperty Name="keg_name" ColumnName="keg_name" />
-                <ScalarProperty Name="keg_description" ColumnName="keg_description" />
-                <ScalarProperty Name="keg_focus" ColumnName="keg_focus" />
-                <ScalarProperty Name="keg_volume" ColumnName="keg_volume" />
-                <ScalarProperty Name="keg_value" ColumnName="keg_value" />
-                <ScalarProperty Name="prog_id" ColumnName="prog_id" />
+                <ScalarProperty Name="kegiatan_id" ColumnName="kegiatan_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="wilayah_id" ColumnName="wilayah_id" />
+                <ScalarProperty Name="kegiatan_nama" ColumnName="kegiatan_nama" />
+                <ScalarProperty Name="kegiatan_deskripsi" ColumnName="kegiatan_deskripsi" />
+                <ScalarProperty Name="kegiatan_tgl_update" ColumnName="kegiatan_tgl_update" />
+                <ScalarProperty Name="kegiatan_tgl_acara" ColumnName="kegiatan_tgl_acara" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -912,12 +978,11 @@
                 <ScalarProperty Name="vol_id" ColumnName="vol_id" />
                 <ScalarProperty Name="vol_card_id" ColumnName="vol_card_id" />
                 <ScalarProperty Name="vol_name" ColumnName="vol_name" />
-                <ScalarProperty Name="wil_id" ColumnName="wil_id" />
                 <ScalarProperty Name="vol_phone" ColumnName="vol_phone" />
                 <ScalarProperty Name="vol_address" ColumnName="vol_address" />
                 <ScalarProperty Name="vol_occupation" ColumnName="vol_occupation" />
                 <ScalarProperty Name="vol_email" ColumnName="vol_email" />
-                <ScalarProperty Name="prog_id" ColumnName="prog_id" />
+                <ScalarProperty Name="kegiatan_id" ColumnName="kegiatan_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -932,6 +997,7 @@
                 <ScalarProperty Name="wil_phone" ColumnName="wil_phone" />
                 <ScalarProperty Name="geo_location" ColumnName="geo_location" />
                 <ScalarProperty Name="web_url" ColumnName="web_url" />
+                <ScalarProperty Name="wil_email" ColumnName="wil_email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

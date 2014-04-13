@@ -64,6 +64,7 @@ namespace E_Sosial.Areas.admin.Controllers
                     create.wil_name = t_wilayah.wil_name;
                     create.wil_phone = t_wilayah.wil_phone;
                     create.wil_type = "Kecamatan";
+                    create.wil_email = t_wilayah.wil_email;
 
                     db.t_wilayah.Add(create);
                     db.SaveChanges();

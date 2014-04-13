@@ -11,12 +11,16 @@ namespace E_Sosial
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
-    public partial class t_csr
+    public partial class t_csr_activity
     {
-        public long csr_id { get; set; }
-        public string csr_name { get; set; }
-        public string csr_address { get; set; }
-        public decimal csr_value { get; set; }
+        public int csr_activity_id { get; set; }
+        public int user_id { get; set; }
+        public int csr_ph_id { get; set; }
+        public string csr_activity_content { get; set; }
+        [StringLength(200)]
+        public string csr_activity_path { get; set; }
+        public System.DateTime csr_activity_date { get; set; }
     }
 }

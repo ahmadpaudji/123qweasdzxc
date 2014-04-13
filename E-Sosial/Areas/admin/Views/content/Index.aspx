@@ -70,13 +70,33 @@
                    </div>
                </div>
                <div class="span6 scCol">
-                   <div class="block" id="grid_block_1">
-                       <div class="head">
-                           <h2>Catatan</h2>
-                       </div>
-                       <div class="content">
-                           <%: ViewBag.pesan %>
-                       </div>
+                   <div class="widgets">
+                       <a class="button text-success" href="#">
+                           <div class="icon">
+                               <span class="mChartBar" sparktype="pie" sparkwidth="30" sparkheight="30"><%: ViewBag.today %>,<%: ViewBag.month %>,<%: ViewBag.year %></span>
+                           </div>
+                           <div class="info">
+                               <span>Visitors</span>
+                               <p>Hari ini: <%: ViewBag.today %>; Bulan ini: <%: ViewBag.month %>;</p>
+                               <p>Tahun ini: <%: ViewBag.year %>;</p>
+                           </div>
+                       </a>
+
+                   </div>
+               </div>
+                <div class="span6 scCol">
+                   <div class="widgets">
+                       <a class="button text-success" href="#">
+                           <div class="icon">
+                               <span class="mChartBar" sparktype="pie" sparkwidth="30" sparkheight="30"><%: ViewBag.todayHit %>,<%: ViewBag.monthHit %>,<%: ViewBag.yearHit %></span>
+                           </div>
+                           <div class="info">
+                               <span>Hits</span>
+                               <p>Hari ini: <%: ViewBag.todayHit %>; Bulan ini: <%: ViewBag.monthHit %>;</p>
+                               <p>Tahun ini: <%: ViewBag.yearHit %>;</p>
+                           </div>
+                       </a>
+
                    </div>
                </div>
            </div>

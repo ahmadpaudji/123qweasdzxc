@@ -11,15 +11,22 @@ namespace E_Sosial
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
     
     public partial class t_kegiatan
     {
-        public long keg_id { get; set; }
-        public string keg_name { get; set; }
-        public string keg_description { get; set; }
-        public string keg_focus { get; set; }
-        public long keg_volume { get; set; }
-        public decimal keg_value { get; set; }
-        public long prog_id { get; set; }
+        [Key]
+        public int kegiatan_id { get; set; }
+        public int user_id { get; set; }
+        public int wilayah_id { get; set; }
+        [Required(ErrorMessage="Nama kegiatan harus diisi")]
+        public string kegiatan_nama { get; set; }
+        [Required(ErrorMessage="Deskripsi kegiatan harus diisi")]
+        [AllowHtml]
+        public string kegiatan_deskripsi { get; set; }
+        public System.DateTime kegiatan_tgl_update { get; set; }
+        [Required(ErrorMessage="Tanggal pelaksanaan acara harus diisi")]
+        public System.DateTime kegiatan_tgl_acara { get; set; }
     }
 }

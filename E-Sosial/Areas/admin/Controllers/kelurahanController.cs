@@ -28,8 +28,8 @@ namespace E_Sosial.Areas.admin.Controllers
         public ActionResult Details(long id = 0)
         {
             t_wilayah t_wilayah = db.t_wilayah.Find(id);
-            var parent = db.t_wilayah.FirstOrDefault(par => par.wil_id == id).parent_id;
-            ViewBag.kecamatan = db.t_wilayah.FirstOrDefault(kec => kec.wil_id == parent).wil_name;
+            var parent = (from table in db.t_wilayah where table.wil_id == id select table.parent_id).FirstOrDefault();
+            ViewBag.kecamatan = (from table in db.t_wilayah where table.wil_id == parent select table.wil_name).FirstOrDefault();
             if (t_wilayah == null)
             {
                 return HttpNotFound();
@@ -67,6 +67,7 @@ namespace E_Sosial.Areas.admin.Controllers
                     create.wil_name = t_wilayah.wil_name;
                     create.wil_phone = t_wilayah.wil_phone;
                     create.wil_type = "Kelurahan";
+                    create.wil_email = t_wilayah.wil_email;
 
                     db.t_wilayah.Add(create);
                     db.SaveChanges();
@@ -116,6 +117,7 @@ namespace E_Sosial.Areas.admin.Controllers
                     t_wilayah.wil_name = wilayah.wil_name;
                     t_wilayah.wil_phone = wilayah.wil_phone;
                     t_wilayah.wil_type = "Kelurahan";
+                    t_wilayah.wil_email = wilayah.wil_email;
 
                     db.SaveChanges();
 

@@ -1,15 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/admin/Views/Shared/content.Master" Inherits="System.Web.Mvc.ViewPage<E_Sosial.Areas.admin.Models.ContentCreate>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/admin/Views/Shared/content.Master" Inherits="System.Web.Mvc.ViewPage<E_Sosial.Areas.admin.Models.CSRactCreate>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Profil
+    Aktifitas CSR
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
- 
+
     <div class="wrap">
         <div class="head">
             <div class="info">
-                <h1>Profil</h1>
+                <h1>Aktifitas CSR</h1>
             </div>
             <div class="search">
             </div>
@@ -19,28 +19,27 @@
                 <div class="span12">
                     <div class="block">
                         <div class="head">
-                            <h2>Tambah Profil</h2>
+                            <h2>Tambah Aktifitas CSR</h2>
                         </div>
-                        <% using (Html.BeginForm("Create", "profil", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        <% using (Html.BeginForm("Create", "csract", FormMethod.Post, new { enctype = "multipart/form-data" }))
                            { %>
                         <%: Html.ValidationSummary(true) %>
                         <div class="content np">
                             <div class="controls-row">
-                                <div class="span1">
-                                    Profil :
+                                <div class="span2">
+                                    Aktifitas :
                                 </div>
-                                <div class="span7">
-                                    <%: Html.EditorFor(model => model.content_name) %>
-                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.content_name) %></span>
+                                <div class="span8">
+                                    <%: Html.DropDownList("csr_ph_id",(IEnumerable<SelectListItem>)ViewBag.csr_ph) %>
                                 </div>
                             </div>
                             <div class="controls-row">
-                                <div class="span1">
+                                <div class="span2">
                                     Gambar :
                                 </div>
                                 <div class="span8">
-                                    <input type="file" accept="image/jpeg" name="file" id="file" />
-                                    <%: Html.ValidationMessageFor(model=>model.file) %>
+                                    <input type="file" accept="image/jpeg" name="gambar" id="gambar" class="uni" />
+                                    <%: Html.ValidationMessageFor(model=>model.gambar) %>
                                 </div>
                             </div>
                             <div class="controls-row">
@@ -48,12 +47,12 @@
 
                                     <div class="block">
                                         <div class="head">
-                                            <h2>Konten</h2>
+                                            <h2>Deskripsi Aktifitas</h2>
                                         </div>
                                         <div class="content np">
                                             <textarea id="clEditor" class="nm nb input-block-level"></textarea>
-                                            <%: Html.HiddenFor(model => model.content, new {id="konten"})%>
-                                            <%: Html.ValidationMessageFor(model => model.content)%>
+                                            <%: Html.HiddenFor(model => model.csr_activity_content, new {id="konten"})%>
+                                            <%: Html.ValidationMessageFor(model => model.csr_activity_content)%>
                                         </div>
                                         
                                     </div>

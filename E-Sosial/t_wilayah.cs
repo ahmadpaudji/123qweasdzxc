@@ -29,7 +29,9 @@ namespace E_Sosial
         public string wil_phone { get; set; }
         [AllowHtml]
         public string geo_location { get; set; }
-        [Url(ErrorMessage="Alamat Url harus benar. Contoh : http://www.contoh.com")]
+        [EmailAddress(ErrorMessage="Format E-Mail contoh@contoh.com")]
+        public string wil_email { get; set; }
+        [Url(ErrorMessage = "Alamat Url harus benar. Contoh : http://www.contoh.com")]
         public string web_url { get; set; }
     }
 }

@@ -1,15 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/admin/Views/Shared/content.Master" Inherits="System.Web.Mvc.ViewPage<E_Sosial.t_wilayah>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/admin/Views/Shared/content.Master" Inherits="System.Web.Mvc.ViewPage<E_Sosial.t_volunteer>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Kelurahan
+    Relawan
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    
+        
     <div class="wrap">
         <div class="head">
             <div class="info">
-                <h1>Kelurahan</h1>
+                <h1>Relawan</h1>
             </div>
             <div class="search">
             </div>
@@ -19,35 +19,36 @@
                 <div class="span6">
                     <div class="block">
                         <div class="head">
-                            <h2>Tambah Kelurahan</h2>
+                            <h2>Tambah Relawan</h2>
                         </div>
                         <% using (Html.BeginForm()) { %>
                         <%: Html.ValidationSummary(true) %>
                         <div class="content np">
                             <div class="controls-row">
                                 <div class="span4">
-                                    Nama Kelurahan :
+                                    No. KTP :
                                 </div>
                                 <div class="span8">
-                                    <%: Html.TextBoxFor(model => model.wil_name) %>
-                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.wil_name) %></span>
+                                    <%: Html.TextBoxFor(model => model.vol_card_id) %>
+                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.vol_card_id) %></span>
                                 </div>
                             </div>
                             <div class="controls-row">
                                 <div class="span4">
-                                    Telepon :
+                                    Nama :
                                 </div>
                                 <div class="span8">
-                                    <%: Html.EditorFor(model => model.wil_phone) %>
-                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.wil_phone) %></span>
+                                    <%: Html.EditorFor(model => model.vol_name) %>
+                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.vol_name) %></span>
                                 </div>
                             </div>
                             <div class="controls-row">
                                 <div class="span4">
-                                    Kecamatan :
+                                    Handphone :
                                 </div>
                                 <div class="span8">
-                                    <%: Html.DropDownList("parent_id",(IEnumerable<SelectListItem>)ViewBag.parent_id) %>
+                                    <%: Html.EditorFor(model => model.vol_phone) %>
+                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.vol_phone) %></span>
                                 </div>
                             </div>
                             <div class="controls-row">
@@ -55,8 +56,8 @@
                                     Alamat :
                                 </div>
                                 <div class="span8">
-                                    <%: Html.EditorFor(model => model.wil_address) %>
-                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.wil_address) %></span>
+                                    <%: Html.EditorFor(model => model.vol_address) %>
+                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.vol_address) %></span>
                                 </div>
                             </div>
                             <div class="controls-row">
@@ -64,31 +65,30 @@
                                     E-Mail :
                                 </div>
                                 <div class="span8">
-                                    <%: Html.TextBoxFor(model => model.wil_email, new { @placeholder="contoh@contoh.com" }) %>
-                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.wil_email) %></span>
+                                    <%: Html.TextBoxFor(model => model.vol_email, new { @placeholder="contoh@contoh.com" }) %>
+                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.vol_email) %></span>
                                 </div>
                             </div>
                             <div class="controls-row">
                                 <div class="span4">
-                                    Google Location :
+                                    Pekerjaan :
                                 </div>
                                 <div class="span8">
-                                    <%: Html.TextBoxFor(model => model.geo_location) %>
-                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.geo_location) %></span>
+                                    <%: Html.TextBoxFor(model => model.vol_occupation) %>
+                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.vol_occupation) %></span>
                                 </div>
                             </div>
                             <div class="controls-row">
                                 <div class="span4">
-                                    Website
+                                    Kegiatan :
                                 </div>
                                 <div class="span8">
-                                    <%: Html.TextBoxFor(model => model.web_url, new { @placeholder="http://www.contoh.com" }) %>
-                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.web_url) %></span>
+                                    <%: Html.DropDownList("kegiatan_id",(IEnumerable<SelectListItem>)ViewBag.kegiatan) %>
                                 </div>
                             </div>
                             <div class="footer">
                                 <div class="side fr">
-                                    <button id="tes" type="submit" class="btn btn-primary">Simpan</button>
+                                    <button id="submit" type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                             </div>
                         </div>

@@ -31,6 +31,8 @@ namespace E_Sosial
         public DbSet<t_bidang> t_bidang { get; set; }
         public DbSet<t_content> t_content { get; set; }
         public DbSet<t_csr> t_csr { get; set; }
+        public DbSet<t_csr_activity> t_csr_activity { get; set; }
+        public DbSet<t_csr_ph> t_csr_ph { get; set; }
         public DbSet<t_dokumentasi> t_dokumentasi { get; set; }
         public DbSet<t_donatur> t_donatur { get; set; }
         public DbSet<t_download> t_download { get; set; }

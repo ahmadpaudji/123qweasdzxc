@@ -17,6 +17,9 @@
         <script type='text/javascript' src='js/other/lte-ie7.js'></script>
     <![endif]-->   
     <!--Java Script -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places"></script>
+    <script type='text/javascript' src='/Areas/admin/js/maps.js'></script>
+
 	<script type='text/javascript' src='/Areas/admin/js/jquery/jquery-2.0.0.min.js'></script>
     <script type='text/javascript' src='/Areas/admin/js/jquery/jquery-ui-1.10.3.custom.min.js'></script>
     <script type='text/javascript' src='/Areas/admin/js/jquery/jquery-migrate-1.1.1.min.js'></script>
@@ -42,7 +45,11 @@
     <script type='text/javascript' src='/Areas/admin/js/nicedit/nicEdit.js'></script>
     <script type='text/javascript' src='/Areas/admin/js/cleditor/jquery.cleditor.min.js'></script>
 
+    <script type='text/javascript' src='/Areas/admin/js/sparklines/jquery.sparkline.min.js'></script>
+
     <script type='text/javascript' src='/Areas/admin/js/fancybox/jquery.fancybox.pack.js'></script>
+
+    <script type='text/javascript' src='/Areas/admin/js/timepicker/jquery-ui-timepicker-addon.js'></script> 
 
     <script type='text/javascript' src='/Areas/admin/js/plugins.js'></script>    
     <script type='text/javascript' src='/Areas/admin/js/actions.js'></script>
@@ -130,13 +137,25 @@
                         <%: Html.ActionLink("Donatur", "Index","donatur") %>
                     </li>
                     <li class="active">
+                        <%: Html.ActionLink("Kegiatan", "Index","kegiatan") %>
+                    </li>
+                    <li class="active">
                         <%: Html.ActionLink("Bencana", "Index","bencana") %>
+                    </li>
+                    <li class="active">
+                        <%: Html.ActionLink("Relawan", "Index","relawan") %>
                     </li>
                     <li class="active">
                         <%: Html.ActionLink("Prosedur", "Index","prosedur") %>
                     </li>
                     <li class="active">
                         <%: Html.ActionLink("Profil", "Index","profil") %>
+                    </li>
+                    <li class="active">
+                        <%: Html.ActionLink("CSR Perusahaan", "Index","csrph") %>
+                    </li>
+                    <li class="active">
+                        <%: Html.ActionLink("Aktifitas CSR", "Index","csract") %>
                     </li>
                     <li class="active">
                         <%: Html.ActionLink("Struktur Organisasi","Index","organisasi") %>

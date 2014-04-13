@@ -41,10 +41,10 @@
                             </div>
                             <div class="controls-row">
                                 <div class="span1">
-                                    File :
+                                    Gambar :
                                 </div>
                                 <div class="span8">
-                                    <input type="file" accept="application/pdf" name="file" id="file" />
+                                    <input type="file" accept="image/jpeg" name="file" id="file" />
                                 </div>
                             </div>
                             <div class="controls-row">

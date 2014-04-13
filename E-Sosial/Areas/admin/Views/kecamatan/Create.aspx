@@ -53,6 +53,15 @@
                             </div>
                             <div class="controls-row">
                                 <div class="span4">
+                                    E-Mail :
+                                </div>
+                                <div class="span8">
+                                    <%: Html.TextBoxFor(model => model.wil_email, new { @placeholder="contoh@contoh.com" }) %>
+                                    <span class="help-inline"><%: Html.ValidationMessageFor(model => model.wil_email) %></span>
+                                </div>
+                            </div>
+                            <div class="controls-row">
+                                <div class="span4">
                                     Google Location :
                                 </div>
                                 <div class="span8">

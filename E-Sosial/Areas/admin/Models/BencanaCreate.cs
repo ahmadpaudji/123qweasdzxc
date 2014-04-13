@@ -17,7 +17,7 @@ namespace E_Sosial.Areas.admin.Models
         [Required(ErrorMessage = "Alamat pelapor harus diisi")]
         public string address { get; set; }
         [Required(ErrorMessage = "Telepon pelapor harus diisi")]
-        [RegularExpression("^[0-9]{12}$", ErrorMessage = "No. telepon salah harus 12 dan berupa angka")]
+        [RegularExpression("^[0-9]{6,12}$", ErrorMessage = "No. telepon salah harus berupa 6-12 angka")]
         public string phone { get; set; }
         [Required(ErrorMessage = "Konten bencana harus diisi")]
         [AllowHtml]

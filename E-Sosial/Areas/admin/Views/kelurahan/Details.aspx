@@ -35,6 +35,7 @@
                                         <th>Nama Kelurahan</th>
                                         <th>Alamat</th>
                                         <th>Telepon</th>
+                                        <th>E-Mail</th>
                                         <th>Website</th>
                                     </tr>
                                 </thead>
@@ -53,6 +54,9 @@
                                             <%: Html.DisplayFor(model=>model.wil_phone) %>
                                         </td>
                                         <td>
+                                            <%: Html.DisplayFor(model=>model.wil_email) %>
+                                        </td>
+                                        <td>
                                             <%: Html.DisplayFor(model=>model.web_url) %>
                                         </td>
                                     </tr>
@@ -60,17 +64,18 @@
                             </table>
                         </div>
                     </div>
-                    <div class="row-fluid scRow">
-                        <div class="span12 scCol">
+                    <div class="row-fluid">
+                        <div class="span12">
 
-                            <div class="block" id="grid_block_1">
+                            <div class="block">
                                 <div class="head">
                                     <h2>Map Kelurahan <%: Html.DisplayFor(model=>model.wil_name) %></h2>
                                 </div>
-                                <div class="content">
-                                    <%: Html.Raw(Model.geo_location) %>
+                                <div class="content np nb">
+                                    <div id="google_world_map" style="width: 100%; height: 300px;"><%: Html.Raw(Model.geo_location) %></div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

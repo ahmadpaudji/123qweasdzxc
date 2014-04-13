@@ -31,11 +31,23 @@ namespace E_Sosial.Areas.admin.Controllers
             var download = (from table in db.t_file where table.mime_type == ".pdf" select table).Count();
             ViewBag.download = download;
 
-            ViewBag.pesan = "Sesuatu yang hidup akan tetap hidup meskipun kita sudah menggapnya sudah mati. Namun tidakkah sebuah dilema mampu menanduskan hati seorang manusia biasa.Sesuatu yang hidup akan tetap hidup meskipun kita sudah menggapnya sudah mati. Namun tidakkah sebuah dilema mampu menanduskan hati seorang manusia biasa.Sesuatu yang hidup akan tetap hidup meskipun kita sudah menggapnya sudah mati. Namun tidakkah sebuah dilema mampu menanduskan hati seorang manusia biasa.Sesuatu yang hidup akan tetap hidup meskipun kita sudah menggapnya sudah mati. Namun tidakkah sebuah dilema mampu menanduskan hati seorang manusia biasa.";
-
             string nama = HttpContext.User.Identity.Name;
             var userNama = (from table in db.users where (table.username == nama) select table.nama).FirstOrDefault();
             ViewBag.UserName = userNama;
+
+            //Visitor
+            ViewBag.today = (from table in db.t_visitor where table.date.Day == DateTime.Now.Day select table).Count();
+
+            ViewBag.month = (from table in db.t_visitor where table.date.Month == DateTime.Now.Month select table).Count();
+
+            ViewBag.year = (from table in db.t_visitor where table.date.Year == DateTime.Now.Year select table).Count();
+
+            //Hit
+            ViewBag.todayHit = (from table in db.t_visitor where table.date.Day == DateTime.Now.Day select table.hits).AsEnumerable().Sum();
+
+            ViewBag.monthHit = (from table in db.t_visitor where table.date.Month == DateTime.Now.Month select table.hits).AsEnumerable().Sum();
+
+            ViewBag.yearHit = (from table in db.t_visitor where table.date.Year == DateTime.Now.Year select table.hits).AsEnumerable().Sum();
 
             return View(db.t_kesejahteraan.ToList());
         }
